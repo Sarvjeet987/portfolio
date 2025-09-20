@@ -95,7 +95,7 @@ var typewriter = new Typewriter(app, {
     loop: true
 });
 
-typewriter.typeString('MERN Full-Stack Developer')
+typewriter.typeString('Mern Full-Stack Developer')
     .pauseFor(2500)
     .deleteAll()
     .typeString('Web Designer')
@@ -104,5 +104,6 @@ typewriter.typeString('MERN Full-Stack Developer')
     .typeString('<strong>FrontEnd Developer</strong>')
     .pauseFor(2500)
     .start();
+
 
 
