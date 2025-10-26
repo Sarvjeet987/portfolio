@@ -101,9 +101,10 @@ typewriter.typeString('Mern Full-Stack Developer')
     .typeString('Web Designer')
     .pauseFor(2500)
     .deleteAll()
-    .typeString('<strong>FrontEnd Developer</strong>')
+    .typeString('<strong>Frontend Developer</strong>')
     .pauseFor(2500)
     .start();
+
 
 
 
