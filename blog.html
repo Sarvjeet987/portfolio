@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="fav-icon.png">
+    <title>Blog</title>
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #28a745;
+            --background-color: #021326;
+            --card-bg: #09223D;
+            --text-light: #f8f9fa;
+            --text-muted: #adb5bd;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --modal-bg: #112a45;
+            --overlay-color: rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .blog-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .filter-bar {
+            text-align: center;
+            margin-bottom: 40px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 10px;
+        }
+
+        .filter-btn {
+            background-color: #173753;
+            color: var(--text-light);
+            border: none;
+            padding: 8px 18px;
+            margin: 0 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .filter-btn:hover {
+            background-color: #254d6f;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            display: block;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 6px 15px var(--shadow-color);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px var(--shadow-color);
+        }
+
+        .card-image-wrapper {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .blog-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 20px 25px;
+        }
+
+        .card-tag {
+            font-size: 0.75em;
+            padding: 5px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .tag-pro {
+            background-color: #004d99;
+            color: #90c7ff;
+        }
+
+        .tag-student {
+            background-color: #7d5200;
+            color: #ffeb99;
+        }
+
+        .tag-insight {
+            background-color: #4a198c;
+            color: #e9b3ff;
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            color: var(--text-light);
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .card-snippet {
+            font-size: 0.95em;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .card-meta {
+            font-size: 0.85em;
+            color: var(--text-muted);
+            border-top: 1px solid #173753;
+            padding-top: 15px;
+        }
+
+        .view-all {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .view-all-button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        .view-all-button:hover {
+            background-color: #218838;
+        }
+
+        /* --- NEW POPUP STYLES --- */
+        .welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--overlay-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .welcome-modal.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--modal-bg);
+            color: var(--text-light);
+            padding: 40px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            text-align: center;
+            border: 1px solid #007bff;
+            /* Primary color border for style */
+        }
+
+        .welcome-modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--text-muted);
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+            border: none;
+            background: none;
+        }
+
+        .close-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-title {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .modal-body {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .modal-body p {
+            margin-bottom: 10px;
+        }
+
+        /* --- END POPUP STYLES --- */
+
+
+        @media (max-width: 768px) {
+            .blog-section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-title {
+                font-size: 1.15em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="welcomeModal" class="welcome-modal">
+        <div class="modal-content">
+            <button class="close-btn" aria-label="Close Modal">&times;</button>
+            <h3 class="modal-title">👋 Welcome to My Blog!</h3>
+            <div class="modal-body">
+                <p>I'm glad you stopped by! Here you'll find technical articles and insights from my work at **Alpha
+                    Media New Delhi and my student learning journey.</p>
+                <p>Use the filter buttons above to explore my Professional Projects and Industry Insights.</p>
+            </div>
+            <a href="#" class="view-all-button" onclick="closeModal(event)">Start Reading →</a>
+        </div>
+    </div>
+    <section class="blog-section">
+        <div class="container">
+            <h2 class="section-title">✨ My Blog Posts</h2>
+            <p class="section-subtitle">Insights from Alpha Media (New Delhi) and my learning journey.</p>
+
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All Posts</button>
+                <button class="filter-btn" data-filter="professional">🏢 Frontend Projects</button>
+                <button class="filter-btn" data-filter="student">🎓 Student Life & Learning</button>
+                <button class="filter-btn" data-filter="insight">💡 Industry Insights</button>
+            </div>
+
+            <div class="blog-grid" id="blog-posts-container">
+
+                <a href="#" class="blog-card" data-category="professional">
+                    <div class="card-image-wrapper">
+                        <img src="mfs-1.png" alt="Modern Foam Solution Project Image" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag tag-pro">🏢 Project Showcase</span>
+                        <h3 class="card-title">Frontend Strategy for 'Modern Foam Solution': Design to Deployment</h3>
+                        <p class="card-snippet">A deep dive into how I built the **responsive UI** for this client
+                            project, focusing on performance and cross-browser compatibility.</p>
+                        <div class="card-meta">
+                            <span>🗓️ Alpha Media | Nov 2025</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="blog-card" data-category="professional">
+                    <div class="card-image-wrapper">
+                        <img src="rss-2.png" alt="Radiant Safety System Project Image" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag tag-pro">🏢 Technical Case Study</span>
+                        <h3 class="card-title">Creating Real-time Dashboards for 'Radiant Safety System' with
+                            [Technology Name]</h3>
+                        <p class="card-snippet">Challenges and solutions in integrating real-time data feeds into the
+                            user interface of this critical safety system using [Your Framework/Library].</p>
+                        <div class="card-meta">
+                            <span>🗓️ Alpha Media | Oct 2025</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="blog-card" data-category="professional">
+                    <div class="card-image-wrapper">
+                        <img src="hpqis-3.png" alt="Hospiquip System Project Image" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag tag-pro">🏢 UX/Accessibility</span>
+                        <h3 class="card-title">Ensuring Accessibility in the 'Hospiquip System' Frontend</h3>
+                        <p class="card-snippet">My approach to building a highly usable and accessible interface for a
+                            healthcare client base, focusing on complex forms and navigation.</p>
+                        <div class="card-meta">
+                            <span>🗓️ Alpha Media | Dec 2025</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="blog-card" data-category="student">
+                    <div class="card-image-wrapper">
+                        <img src="du-role-4.png" alt="Student Learning Image" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag tag-student">🎓 Student Life</span>
+                        <h3 class="card-title">Managing the Dual Roles: Student and Frontend Engineer at Alpha Media
+                        </h3>
+                        <p class="card-snippet">Practical tips and personal growth lessons on balancing college
+                            deadlines, learning new technologies, and contributing to real client projects.</p>
+                        <div class="card-meta">
+                            <span>🗓️ Personal Insight | Nov 2025</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="blog-card" data-category="insight">
+                    <div class="card-image-wrapper">
+                        <img src="al-5.png" alt="AI in Frontend Image" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag tag-insight">💡 Industry Insights</span>
+                        <h3 class="card-title">The Rise of AI in UI/UX: Frontend Engineer's Guide to Copilots</h3>
+                        <p class="card-snippet">Examining how AI tools are changing the workflow for developers—from
+                            code
+                            generation to automated testing—and how to stay relevant.</p>
+                        <div class="card-meta">
+                            <span>🗓️ Tech Trend | Dec 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="view-all">
+                <a href="index.html" class="view-all-button">Go to home →</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Function to show the modal
+        function showModal() {
+            const modal = document.getElementById('welcomeModal');
+            // Check if the user has already seen the modal in this session
+            if (!sessionStorage.getItem('modalSeen')) {
+                modal.classList.add('show');
+            }
+        }
+
+        // Function to close the modal
+        function closeModal(event) {
+            // Prevent default action if it's an <a> tag click
+            if (event && event.preventDefault) {
+                event.preventDefault();
+            }
+            const modal = document.getElementById('welcomeModal');
+            modal.classList.remove('show');
+            // Set a flag so the modal doesn't show again on reload (for this session)
+            sessionStorage.setItem('modalSeen', 'true');
+        }
+
+        function animateCards() {
+            const cards = document.querySelectorAll('.blog-card');
+            cards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            });
+        }
+
+        function setupFiltering() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    blogCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+
+                        if (filterValue === 'all' || filterValue === cardCategory) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 400);
+                        }
+                    });
+                });
+            });
+
+            // Event listener for the close button
+            document.querySelector('.close-btn').addEventListener('click', closeModal);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCards();
+            setupFiltering();
+            // Show the modal after all elements are loaded
+            showModal();
+        });
+    </script>
+
+</body>
+
+</html>
