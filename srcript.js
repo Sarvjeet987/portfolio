@@ -106,5 +106,32 @@ typewriter.typeString('Mern Full-Stack Developer')
     .start();
 
 
+// Function to show the modal
+function showModal() {
+    const modal = document.getElementById('welcomeModal');
+    // Check if the user has already seen the modal in this session
+    if (!sessionStorage.getItem('modalSeen')) {
+        modal.classList.add('show');
+    }
+}
 
+// Function to close the modal
+function closeModal(event) {
+    // Prevent default action if it's an <a> tag click
+    if (event && event.preventDefault) {
+        event.preventDefault();
+    }
+    const modal = document.getElementById('welcomeModal');
+    modal.classList.remove('show');
+    // Set a flag so the modal doesn't show again on reload (for this session)
+    sessionStorage.setItem('modalSeen', 'true');
+}
 
+// Event listener to show the modal when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (Other functions like animateCards() and setupFiltering() are also called here)
+    showModal();
+
+    // Event listener for the close button, make sure this runs after DOMContentLoad
+    document.querySelector('.close-btn').addEventListener('click', closeModal);
+});
