@@ -399,7 +399,7 @@ nav li {
 .process-steps {
     display: flex;
     flex-wrap: wrap;
-    gap: 80px;
+    gap: 20px;
 }
 
 .step {
