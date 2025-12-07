@@ -135,3 +135,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener for the close button, make sure this runs after DOMContentLoad
     document.querySelector('.close-btn').addEventListener('click', closeModal);
 });
+
+
+
+
+
+//PROJECT POPUP
+
+let projectLinkToOpen = null;
+
+const projectButtons = document.querySelectorAll(".proj-btn");
+
+projectButtons.forEach(btn => {
+    btn.addEventListener("click", function () {
+        projectLinkToOpen = this.getAttribute("data-link");
+        document.getElementById("projectAccessPopup").style.display = "flex";
+    });
+});
+
+document.getElementById("projSubmitBtn").addEventListener("click", function () {
+    let userName = document.getElementById("projUserName").value.trim();
+    let errorBox = document.getElementById("proj-error-msg");
+
+    if (userName === "") {
+        errorBox.innerText = "Please enter your full name.";
+        errorBox.style.color = "red";
+        return;
+    }
+
+    errorBox.innerText = "";
+    document.getElementById("projectAccessPopup").style.display = "none";
+
+    if (projectLinkToOpen) {
+        window.open(projectLinkToOpen, "_blank");
+    }
+});
+
+document.getElementById("projCloseBtn").addEventListener("click", function () {
+    document.getElementById("projectAccessPopup").style.display = "none";
+    document.getElementById("projUserName").value = "";
+    document.getElementById("proj-error-msg").innerText = "";
+});
