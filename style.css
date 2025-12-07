@@ -1287,3 +1287,180 @@ textarea {
 .modal-body p {
     margin-bottom: 10px;
 }
+
+
+
+
+
+
+
+/* PROJECT POPUP – */
+
+
+.proj-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 19, 38, 0.85);
+    backdrop-filter: blur(6px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: popupFadeBG 0.4s ease;
+}
+
+@keyframes popupFadeBG {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.proj-popup-box {
+    position: relative;
+    width: 90%;
+    max-width: 380px;
+    background: #021326;
+    border-radius: 15px;
+    padding: 30px 30px 25px 30px;
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    text-align: center;
+
+    transform: scale(0.7);
+    opacity: 0;
+    animation: popupZoomIn 0.35s ease forwards;
+}
+
+@keyframes popupZoomIn {
+    0% {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.proj-popup-box h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.proj-popup-box input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #0c213f;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.proj-popup-box input:focus {
+    background: #103057;
+    box-shadow: 0 0 8px #1b5cff;
+}
+
+#proj-error-msg {
+    height: 20px;
+    font-size: 14px;
+    margin-top: 5px;
+    color: #ff4c4c;
+}
+
+.proj-popup-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+#projSubmitBtn {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-radius: 10px;
+    background: #1b5cff;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#projSubmitBtn:hover {
+    background: #3a70ff;
+    transform: translateY(-2px);
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #d9534f;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.25s ease;
+}
+
+.close-btn:hover {
+    background: #ff6763;
+    transform: scale(1.1);
+}
+
+
+@media (max-width: 480px) {
+    .proj-popup-box {
+        padding: 25px;
+        max-width: 92%;
+    }
+
+    .proj-popup-box h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    #projSubmitBtn {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .close-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 350px) {
+    .proj-popup-box {
+        padding: 20px;
+    }
+
+    .close-btn {
+        top: 8px;
+        right: 8px;
+    }
+}
