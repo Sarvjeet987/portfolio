@@ -1072,10 +1072,11 @@ nav li {
 
 .contact .contact-info .social-icons i {
     font-size: 25px;
+    transition: all ease-in 0.2s;
 }
 
 .contact .contact-info .social-icons i:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
 .contact .social-icons a {
