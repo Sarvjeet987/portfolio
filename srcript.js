@@ -95,7 +95,7 @@ var typewriter = new Typewriter(app, {
     loop: true
 });
 
-typewriter.typeString('Mern Full-Stack Developer')
+typewriter.typeString('Mern Stack Developer')
     .pauseFor(2500)
     .deleteAll()
     .typeString('Web Designer')
@@ -176,3 +176,4 @@ document.getElementById("projCloseBtn").addEventListener("click", function () {
     document.getElementById("projUserName").value = "";
     document.getElementById("proj-error-msg").innerText = "";
 });
+
