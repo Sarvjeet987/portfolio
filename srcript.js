@@ -1,179 +1,312 @@
-//navbar
+/* ==========================================================================
+   TechSarvjeet Portfolio — Script
+   ========================================================================== */
 
-// let menuList = document.getElementById("menuList");
-// menuList.style.maxHeight = "0px";
-// function ToggleMenu() {
-//     if (menuList.style.maxHeight == "0px") {
-//         menuList.style.maxHeight = "400px"
-//     }
-//     else {
-//         menuList.style.maxHeight = "0px";
-//     }
-// }
-
-
-//updated
-
-let menuList = document.getElementById("menuList");
-menuList.style.maxHeight = "0px";
-
-function ToggleMenu() {
-    if (menuList.style.maxHeight == "0px") {
-        menuList.style.maxHeight = "500px";
-    } else {
-        menuList.style.maxHeight = "0px";
-    }
-}
-
-// Add event listeners to each menu item to hide the menu on click
-let menuItems = menuList.querySelectorAll("li");
-menuItems.forEach(function (item) {
-    item.addEventListener("click", function () {
-        menuList.style.maxHeight = "0px";
-    });
-});
-
-const hireBtn = document.getElementById("hireBtn");
-hireBtn.addEventListener("click", function (e) {
-    e.stopPropagation(); // Prevent double firing if needed
-    menuList.style.maxHeight = "0px";
-    // Add any extra action for the Hire Me button here
-});
-
-/*** */
-
-
-//***************************************** */
-
-
-/*form message*/
-
-// const form = document.getElementById("contactForm");
-// form.addEventListener("submit", function (e) {
-//     const name = form.name.value.trim();
-//     const email = form.email.value.trim();
-//     const subject = form.subject.value.trim();
-//     const message = form.message.value.trim();
-//     if (!name || !email || !subject || !message) {
-//         e.preventDefault();
-//         alert("Please fill out the form!");
-//     } else {
-//         alert("Message sent successfully!");
-//     }
-// });
-
-
-const form = document.getElementById("contactForm");
-
-form.addEventListener("submit", function (e) {
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const subject = form.subject.value.trim();
-    const message = form.message.value.trim();
-
-    if (!name || !email || !subject || !message) {
-        e.preventDefault(); // stop form submit
-        alert("Please fill out the form!");
-    } else {
-        alert("Message sent successfully!");
-        // Thoda delay rakhenge taki Formspree pe data chala jaye
-        setTimeout(() => {
-            form.reset(); // input fields clear
-        }, 500);
-    }
-});
-
-
-
-//************************************************* */
-
-
-//moving text
-var app = document.getElementById('app');
-
-var typewriter = new Typewriter(app, {
-    loop: true
-});
-
-typewriter.typeString('Mern Stack Developer')
-    .pauseFor(2500)
-    .deleteAll()
-    .typeString('Web Designer')
-    .pauseFor(2500)
-    .deleteAll()
-    .typeString('<strong>Frontend Developer</strong>')
-    .pauseFor(2500)
-    .start();
-
-
-// Function to show the modal
-function showModal() {
-    const modal = document.getElementById('welcomeModal');
-    // Check if the user has already seen the modal in this session
-    if (!sessionStorage.getItem('modalSeen')) {
-        modal.classList.add('show');
-    }
-}
-
-// Function to close the modal
-function closeModal(event) {
-    // Prevent default action if it's an <a> tag click
-    if (event && event.preventDefault) {
-        event.preventDefault();
-    }
-    const modal = document.getElementById('welcomeModal');
-    modal.classList.remove('show');
-    // Set a flag so the modal doesn't show again on reload (for this session)
-    sessionStorage.setItem('modalSeen', 'true');
-}
-
-// Event listener to show the modal when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    // ... (Other functions like animateCards() and setupFiltering() are also called here)
+
+    /* ---------------- Mobile menu ---------------- */
+    const menuList = document.getElementById('menuList');
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+
+    if (menuList) menuList.style.maxHeight = '0px';
+
+    function toggleMenu() {
+        const isOpen = menuList.style.maxHeight !== '0px';
+        menuList.style.maxHeight = isOpen ? '0px' : '600px';
+        if (menuToggleBtn) menuToggleBtn.setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    if (menuToggleBtn) {
+        menuToggleBtn.addEventListener('click', toggleMenu);
+    }
+
+    if (menuList) {
+        menuList.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                menuList.style.maxHeight = '0px';
+                if (menuToggleBtn) menuToggleBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    const hireBtn = document.getElementById('hireBtn');
+    if (hireBtn) {
+        hireBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuList.style.maxHeight = '0px';
+        });
+    }
+
+    /* ---------------- Theme toggle (dark / light) ---------------- */
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const root = document.documentElement;
+
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            root.setAttribute('data-theme', 'light');
+            if (themeIcon) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        } else {
+            root.removeAttribute('data-theme');
+            if (themeIcon) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+    }
+
+    const savedTheme = localStorage.getItem('ts-theme');
+    if (savedTheme) applyTheme(savedTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+            const next = current === 'light' ? 'dark' : 'light';
+            applyTheme(next);
+            localStorage.setItem('ts-theme', next);
+        });
+    }
+
+    /* ---------------- Active nav link on scroll ---------------- */
+    const sections = document.querySelectorAll('main section[id], section[id]');
+    const navLinks = document.querySelectorAll('#menuList .cool-link');
+
+    function setActiveLink() {
+        let currentId = '';
+        sections.forEach((section) => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 120 && rect.bottom >= 120) {
+                currentId = section.id;
+            }
+        });
+        navLinks.forEach((link) => {
+            const href = link.getAttribute('href');
+            if (href === `#${currentId}`) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+
+    /* ---------------- Contact form ---------------- */
+    const form = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+    const successToast = document.getElementById('successToast');
+    const successToastClose = document.getElementById('successToastClose');
+
+    let toastTimer = null;
+
+    function showToast(isError) {
+        if (!successToast) return;
+        successToast.classList.toggle('error', !!isError);
+
+        const icon = successToast.querySelector('.success-toast-icon i');
+        const strongEl = successToast.querySelector('.success-toast-body strong');
+        const spanEl = successToast.querySelector('.success-toast-body span');
+
+        if (isError) {
+            if (icon) icon.className = 'fa-solid fa-triangle-exclamation';
+            if (strongEl) strongEl.textContent = "Couldn't send message";
+            if (spanEl) spanEl.textContent = 'Something went wrong — please email techsarvjeet123@gmail.com directly.';
+        } else {
+            if (icon) icon.className = 'fa-solid fa-check';
+            if (strongEl) strongEl.textContent = 'Message sent!';
+            if (spanEl) spanEl.textContent = 'Thanks for reaching out — Sarvjeet will get back to you soon.';
+        }
+
+        successToast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => successToast.classList.remove('show'), 6000);
+    }
+
+    if (successToastClose) {
+        successToastClose.addEventListener('click', () => {
+            successToast.classList.remove('show');
+            clearTimeout(toastTimer);
+        });
+    }
+
+    if (form) {
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const name = form.name.value.trim();
+            const email = form.email.value.trim();
+            const subject = form.subject.value.trim();
+            const message = form.message.value.trim();
+
+            if (!name || !email || !subject || !message) {
+                if (formStatus) {
+                    formStatus.textContent = 'Please fill out every field before sending.';
+                    formStatus.className = 'form-status error';
+                }
+                return;
+            }
+
+            if (formStatus) {
+                formStatus.textContent = 'Sending your message...';
+                formStatus.className = 'form-status';
+            }
+            if (contactSubmitBtn) contactSubmitBtn.disabled = true;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    if (formStatus) {
+                        formStatus.textContent = '';
+                        formStatus.className = 'form-status';
+                    }
+                    showToast(false);
+                    form.reset();
+                } else {
+                    if (formStatus) {
+                        formStatus.textContent = 'Something went wrong. Please try again or email directly.';
+                        formStatus.className = 'form-status error';
+                    }
+                    showToast(true);
+                }
+            } catch (err) {
+                if (formStatus) {
+                    formStatus.textContent = 'Network error — please check your connection and try again.';
+                    formStatus.className = 'form-status error';
+                }
+                showToast(true);
+            } finally {
+                if (contactSubmitBtn) contactSubmitBtn.disabled = false;
+            }
+        });
+    }
+
+    /* ---------------- Typewriter (role text) ---------------- */
+    const appEl = document.getElementById('app');
+    if (appEl && window.Typewriter) {
+        const typewriter = new Typewriter(appEl, { loop: true });
+        typewriter
+            .typeString('Full Stack Web Developer')
+            .pauseFor(2200)
+            .deleteAll()
+            .typeString('PHP & Laravel Developer')
+            .pauseFor(2200)
+            .deleteAll()
+            .typeString('Full Stack Engineer')
+            .pauseFor(2200)
+            .start();
+    }
+
+    /* ---------------- Welcome modal ---------------- */
+    const modal = document.getElementById('welcomeModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalCloseBtn2 = document.getElementById('modalCloseBtn2');
+    const modalViewProjects = document.getElementById('modalViewProjects');
+
+    function showModal() {
+        if (modal && !sessionStorage.getItem('modalSeen')) {
+            // Small delay so the entrance animation is noticeable rather than instant
+            setTimeout(() => modal.classList.add('show'), 400);
+        }
+    }
+
+    function closeModal() {
+        if (modal) {
+            modal.classList.remove('show');
+            sessionStorage.setItem('modalSeen', 'true');
+        }
+    }
+
     showModal();
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+    if (modalCloseBtn2) modalCloseBtn2.addEventListener('click', closeModal);
+    if (modalViewProjects) {
+        modalViewProjects.addEventListener('click', () => {
+            closeModal();
+            const projSection = document.getElementById('proj');
+            if (projSection) projSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+        });
+    }
 
-    // Event listener for the close button, make sure this runs after DOMContentLoad
-    document.querySelector('.close-btn').addEventListener('click', closeModal);
-});
+    /* ---------------- Project access popup ---------------- */
+    let projectLinkToOpen = null;
+    const projectButtons = document.querySelectorAll('.proj-btn');
+    const projectAccessPopup = document.getElementById('projectAccessPopup');
+    const projUserName = document.getElementById('projUserName');
+    const projErrorMsg = document.getElementById('proj-error-msg');
+    const projSubmitBtn = document.getElementById('projSubmitBtn');
+    const projCloseBtn = document.getElementById('projCloseBtn');
 
-
-
-
-
-//PROJECT POPUP
-
-let projectLinkToOpen = null;
-
-const projectButtons = document.querySelectorAll(".proj-btn");
-
-projectButtons.forEach(btn => {
-    btn.addEventListener("click", function () {
-        projectLinkToOpen = this.getAttribute("data-link");
-        document.getElementById("projectAccessPopup").style.display = "flex";
+    projectButtons.forEach((btn) => {
+        btn.addEventListener('click', function () {
+            projectLinkToOpen = this.getAttribute('data-link');
+            if (projectAccessPopup) projectAccessPopup.style.display = 'flex';
+            if (projUserName) projUserName.focus();
+        });
     });
-});
 
-document.getElementById("projSubmitBtn").addEventListener("click", function () {
-    let userName = document.getElementById("projUserName").value.trim();
-    let errorBox = document.getElementById("proj-error-msg");
+    if (projSubmitBtn) {
+        projSubmitBtn.addEventListener('click', () => {
+            const userName = projUserName ? projUserName.value.trim() : '';
 
-    if (userName === "") {
-        errorBox.innerText = "Please enter your full name.";
-        errorBox.style.color = "red";
-        return;
+            if (userName === '') {
+                if (projErrorMsg) projErrorMsg.textContent = 'Please enter your full name.';
+                return;
+            }
+
+            if (projErrorMsg) projErrorMsg.textContent = '';
+            if (projectAccessPopup) projectAccessPopup.style.display = 'none';
+
+            if (projectLinkToOpen) {
+                window.open(projectLinkToOpen, '_blank', 'noopener,noreferrer');
+            }
+        });
     }
 
-    errorBox.innerText = "";
-    document.getElementById("projectAccessPopup").style.display = "none";
+    if (projCloseBtn) {
+        projCloseBtn.addEventListener('click', () => {
+            if (projectAccessPopup) projectAccessPopup.style.display = 'none';
+            if (projUserName) projUserName.value = '';
+            if (projErrorMsg) projErrorMsg.textContent = '';
+        });
+    }
 
-    if (projectLinkToOpen) {
-        window.open(projectLinkToOpen, "_blank");
+    /* ---------------- Scroll reveal ---------------- */
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    if ('IntersectionObserver' in window && revealEls.length) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealEls.forEach((el) => observer.observe(el));
+    } else {
+        revealEls.forEach((el) => el.classList.add('in-view'));
+    }
+
+    /* ---------------- AOS init ---------------- */
+    if (window.AOS) {
+        AOS.init({ once: true });
     }
 });
-
-document.getElementById("projCloseBtn").addEventListener("click", function () {
-    document.getElementById("projectAccessPopup").style.display = "none";
-    document.getElementById("projUserName").value = "";
-    document.getElementById("proj-error-msg").innerText = "";
-});
-
