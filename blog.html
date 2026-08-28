@@ -2,542 +2,276 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Blog | Sarvjeet Kumar – Web Development & Coding</title>
-
-    <!-- SEO Meta -->
-    <meta name="description" content="Read blogs by Sarvjeet Kumar on web development, HTML, CSS, JavaScript, React, projects and learning journey.">
-    <meta name="keywords" content="Web Development Blog, HTML CSS Blog, JavaScript Blog, React Blog, Coding Blog, Sarvjeet Kumar Blog, Programming Tutorials">
-    <meta name="author" content="Sarvjeet Kumar">
+    <title>Blog | Sarvjeet Kumar — Full Stack Web Developer</title>
+    <meta name="title" content="Blog | Sarvjeet Kumar — Full Stack Web Developer">
+    <meta name="description"
+        content="Case studies, tutorials, and SEO notes from Sarvjeet Kumar, a Full Stack Web Developer in New Delhi working with PHP, Laravel, MySQL, and the MERN stack.">
+    <meta name="keywords" content="Sarvjeet Kumar blog, PHP Laravel tutorials, MERN stack case studies, web developer blog India">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sarvjeet987.github.io/portfolio/blog.html" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Web Development Blog | Sarvjeet Kumar">
-    <meta property="og:description" content="Tutorials, tips and projects on modern web development.">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://sarvjeet987.github.io/portfolio/blog.html">
-    <meta property="og:type" content="article">
+    <meta property="og:title" content="Blog | Sarvjeet Kumar — Full Stack Web Developer">
+    <meta property="og:description" content="Case studies, tutorials, and SEO notes from a Full Stack Web Developer in New Delhi.">
+    <meta property="og:image" content="https://sarvjeet987.github.io/portfolio/og-image.jpg">
 
-    <!-- Styles -->
+    <meta name="theme-color" content="#021326">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="fav-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="fav-icon.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "TechSarvjeet Blog",
+      "url": "https://sarvjeet987.github.io/portfolio/blog.html",
+      "author": {
+        "@type": "Person",
+        "name": "Sarvjeet Kumar"
+      }
+    }
+    </script>
 
     <style>
-        :root {
-            --primary-color: #007bff;
-            --secondary-color: #28a745;
-            --background-color: #021326;
-            --card-bg: #09223D;
-            --text-light: #f8f9fa;
-            --text-muted: #adb5bd;
-            --shadow-color: rgba(0, 0, 0, 0.5);
-            --modal-bg: #112a45;
-            --overlay-color: rgba(0, 0, 0, 0.8);
+        .blog-hero {
+            padding: 8rem 7.5rem 4rem;
+            background-color: var(--bg-0);
+            text-align: center;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .blog-hero .eyebrow-mono {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--brand-red);
+            display: block;
+            margin-bottom: 14px;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--background-color);
-            line-height: 1.6;
-            color: var(--text-light);
+        .blog-hero h1 {
+            font-size: 42px;
+            color: var(--text-hi);
+            margin-bottom: 14px;
         }
 
-        .container {
-            max-width: 1200px;
+        .blog-hero p {
+            color: var(--text-mid);
+            max-width: 560px;
             margin: 0 auto;
-            padding: 0 15px;
+            font-size: 16px;
         }
 
-        .blog-section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8em;
-            margin-bottom: 5px;
-            color: var(--text-light);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1em;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .filter-bar {
-            text-align: center;
-            margin-bottom: 40px;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 10px;
-        }
-
-        .filter-btn {
-            background-color: #173753;
-            color: var(--text-light);
-            border: none;
-            padding: 8px 18px;
-            margin: 0 5px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .filter-btn:hover {
-            background-color: #254d6f;
-        }
-
-        .filter-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
+        .blog-list {
+            background-color: var(--bg-1);
+            padding: 4rem 7.5rem 6rem;
         }
 
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        .blog-card {
-            display: block;
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 6px 15px var(--shadow-color);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(20px);
+        .blog-post-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            transition: border-color 0.3s ease, transform 0.3s ease;
         }
 
-        .blog-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px var(--shadow-color);
+        .blog-post-card:hover {
+            border-color: var(--brand-red);
+            transform: translateY(-4px);
         }
 
-        .card-image-wrapper {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .card-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .blog-card:hover .card-image {
-            transform: scale(1.05);
-        }
-
-        .card-content {
-            padding: 20px 25px;
-        }
-
-        .card-tag {
-            font-size: 0.75em;
-            padding: 5px 12px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            display: inline-block;
-        }
-
-        .tag-pro {
-            background-color: #004d99;
-            color: #90c7ff;
-        }
-
-        .tag-student {
-            background-color: #7d5200;
-            color: #ffeb99;
-        }
-
-        .tag-insight {
-            background-color: #4a198c;
-            color: #e9b3ff;
-        }
-
-        .card-title {
-            font-size: 1.3em;
-            color: var(--text-light);
-            margin: 0 0 10px 0;
-            font-weight: 700;
-        }
-
-        .card-snippet {
-            font-size: 0.95em;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
-
-        .card-meta {
-            font-size: 0.85em;
-            color: var(--text-muted);
-            border-top: 1px solid #173753;
-            padding-top: 15px;
-        }
-
-        .view-all {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .view-all-button {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: background-color 0.3s;
-        }
-
-        .view-all-button:hover {
-            background-color: #218838;
-        }
-
-        /* --- NEW POPUP STYLES --- */
-        .welcome-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--overlay-color);
+        .blog-post-card .meta {
             display: flex;
-            justify-content: center;
+            gap: 10px;
             align-items: center;
-            z-index: 1000;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            margin-bottom: 14px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-low);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
 
-        .welcome-modal.show {
-            visibility: visible;
-            opacity: 1;
+        .blog-post-card .meta .tag {
+            color: var(--brand-red);
         }
 
-        .modal-content {
-            background-color: var(--modal-bg);
-            color: var(--text-light);
-            padding: 40px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 450px;
-            position: relative;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-            text-align: center;
-            border: 1px solid #007bff;
-            /* Primary color border for style */
-        }
-
-        .welcome-modal.show .modal-content {
-            transform: scale(1);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            color: var(--text-muted);
-            font-size: 1.5em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.2s;
-            border: none;
-            background: none;
-        }
-
-        .close-btn:hover {
-            color: var(--primary-color);
-        }
-
-        .modal-title {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 2em;
-            font-weight: 700;
-        }
-
-        .modal-body {
-            font-size: 1.1em;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        .modal-body p {
+        .blog-post-card h2 {
+            font-size: 19px;
+            color: var(--text-hi);
             margin-bottom: 10px;
         }
 
-        /* --- END POPUP STYLES --- */
+        .blog-post-card p {
+            color: var(--text-mid);
+            font-size: 14.5px;
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
 
+        .blog-post-card .read-more {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
 
-        @media (max-width: 768px) {
-            .blog-section {
-                padding: 60px 0;
+        .blog-post-card .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .blog-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-mid);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .blog-back:hover {
+            color: var(--brand-red);
+        }
+
+        @media (max-width:1080px) {
+            .blog-hero {
+                padding: 5rem 20px 3rem;
             }
 
-            .section-title {
-                font-size: 2em;
+            .blog-list {
+                padding: 3rem 20px 4rem;
             }
 
             .blog-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .card-title {
-                font-size: 1.15em;
             }
         }
     </style>
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div id="welcomeModal" class="welcome-modal">
-        <div class="modal-content">
-            <button class="close-btn" aria-label="Close Modal">&times;</button>
-            <h3 class="modal-title">👋 Welcome to My Blog!</h3>
-            <div class="modal-body">
-                <p>I'm glad you stopped by! Here you'll find technical articles and insights from my work at **Gencare New Delhi and my student learning journey.</p>
-                <p>Use the filter buttons above to explore my Professional Projects and Industry Insights.</p>
-            </div>
-            <a href="#" class="view-all-button" onclick="closeModal(event)">Start Reading →</a>
+    <nav aria-label="Primary navigation">
+        <div class="logo">
+            <a href="index.html" aria-label="TechSarvjeet home">
+                <h1>Tech<span class="logo-dot">Sarvjeet</span></h1>
+            </a>
         </div>
-    </div>
-    <section class="blog-section">
-        <div class="container">
-            <h2 class="section-title">✨ My Blog Posts</h2>
-            <p class="section-subtitle">Enhanced my ability to adapt quickly, solve problems, and work in a fast-paced professional environment.</p>
-
-            <div class="filter-bar">
-                <button class="filter-btn active" data-filter="all">All Posts</button>
-                <button class="filter-btn" data-filter="professional">🏢 Frontend Projects</button>
-                <button class="filter-btn" data-filter="student">🎓 Student Life & Learning</button>
-                <button class="filter-btn" data-filter="insight">💡 Industry Insights</button>
-            </div>
-
-            <div class="blog-grid" id="blog-posts-container">
-
-                <a href="#" class="blog-card" data-category="professional">
-                    <div class="card-image-wrapper">
-                        <img src="mfs-1.png" alt="Modern Foam Solution Project Image" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag tag-pro">🏢 Project Showcase</span>
-                        <h3 class="card-title">Frontend Strategy for 'Modern Foam Solution': Design to Deployment</h3>
-                        <p class="card-snippet">A deep dive into how I built the **responsive UI** for this client
-                            project, focusing on performance and cross-browser compatibility.</p>
-                        <div class="card-meta">
-                            <span>🗓️ Alpha Media | Nov 2025</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="blog-card" data-category="professional">
-                    <div class="card-image-wrapper">
-                        <img src="rss-2.png" alt="Radiant Safety System Project Image" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag tag-pro">🏢 Technical Case Study</span>
-                        <h3 class="card-title">Creating Real-time Dashboards for 'Radiant Safety System' with
-                            [Technology Name]</h3>
-                        <p class="card-snippet">Challenges and solutions in integrating real-time data feeds into the
-                            user interface of this critical safety system using [Your Framework/Library].</p>
-                        <div class="card-meta">
-                            <span>🗓️ Alpha Media | Oct 2025</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="blog-card" data-category="professional">
-                    <div class="card-image-wrapper">
-                        <img src="hpqis-3.png" alt="Hospiquip System Project Image" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag tag-pro">🏢 UX/Accessibility</span>
-                        <h3 class="card-title">Ensuring Accessibility in the 'Hospiquip System' Frontend</h3>
-                        <p class="card-snippet">My approach to building a highly usable and accessible interface for a
-                            healthcare client base, focusing on complex forms and navigation.</p>
-                        <div class="card-meta">
-                            <span>🗓️ Alpha Media | Dec 2025</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="blog-card" data-category="student">
-                    <div class="card-image-wrapper">
-                        <img src="du-role-4.png" alt="Student Learning Image" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag tag-student">🎓 Student Life</span>
-                        <h3 class="card-title">Managing the Dual Roles: Student and Frontend Engineer at Alpha Media
-                        </h3>
-                        <p class="card-snippet">Practical tips and personal growth lessons on balancing college
-                            deadlines, learning new technologies, and contributing to real client projects.</p>
-                        <div class="card-meta">
-                            <span>🗓️ Personal Insight | Nov 2025</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="blog-card" data-category="insight">
-                    <div class="card-image-wrapper">
-                        <img src="al-5.png" alt="AI in Frontend Image" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag tag-insight">💡 Industry Insights</span>
-                        <h3 class="card-title">The Rise of AI in UI/UX: Frontend Engineer's Guide to Copilots</h3>
-                        <p class="card-snippet">Examining how AI tools are changing the workflow for developers—from
-                            code
-                            generation to automated testing—and how to stay relevant.</p>
-                        <div class="card-meta">
-                            <span>🗓️ Tech Trend | Dec 2025</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="blog-card" data-category="professional">
-                    <div class="card-image-wrapper">
-                        <img src="kf-system-6.png" alt="AI in Frontend Image" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag tag-insight">💡 Furniture Insights</span>
-                        <h3 class="card-title">Why KF Systems is a Trusted Name in Furniture Industry</h3>
-                        <p class="card-snippet">With years of experience and industry expertise, KF Systems has built a
-                            strong reputation for quality and reliability. Under the leadership of Mr. Rahul Kumar, the
-                            company consistently delivers furniture that meets high standards of durability, design, and
-                            customer satisfaction across India.</p>
-                        <div class="card-meta">
-                            <span>🗓️ Tech Trend | Jan 2026</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="blog-card" data-category="professional">
-                    <div class="card-image-wrapper">
-                        <img src="paper-mart-7.png" alt="AI in Frontend Image" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag tag-insight">🏢 Industry Insights</span>
-                        <h3 class="card-title">Quality Paper Boards for Packaging Excellence</h3>
-                        <p class="card-snippet">Our duplex boards and folding box boards are widely used in high-quality
-                            packaging applications. Axis Paper Mart focuses on supplying boards that offer excellent
-                            strength, printability, and durability, helping brands create attractive and reliable
-                            packaging solutions.</p>
-                        <div class="card-meta">
-                            <span>🗓️ Tech Trend | Jan 2026</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="view-all">
-                <a href="index.html" class="view-all-button">Go to home →</a>
+        <ul id="menuList">
+            <li><a href="index.html#hom" class="cool-link">Home</a></li>
+            <li><a href="index.html#about" class="cool-link">About</a></li>
+            <li><a href="index.html#experience" class="cool-link">Experience</a></li>
+            <li><a href="index.html#servisess" class="cool-link">Services</a></li>
+            <li><a href="index.html#proj" class="cool-link">Projects</a></li>
+            <li><a href="blog.html" class="cool-link active">Blog</a></li>
+            <li><a href="index.html#contactME" class="cool-link">Contact</a></li>
+            <li><a href="index.html#contactME"><button id="hireBtn">Hire Me</button></a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+            <div class="menuIcon">
+                <button id="menuToggleBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="menuList">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <script>
-        // Function to show the modal
-        function showModal() {
-            const modal = document.getElementById('welcomeModal');
-            // Check if the user has already seen the modal in this session
-            if (!sessionStorage.getItem('modalSeen')) {
-                modal.classList.add('show');
-            }
-        }
+    <main id="main-content">
+        <section class="blog-hero">
+            <span class="eyebrow-mono">Writing &amp; case studies</span>
+            <h1>The Blog</h1>
+            <p>Write-ups on projects I've built, tutorials on the tools I use daily, and notes on SEO and web
+                performance — without sharing anything confidential about client work.</p>
+        </section>
 
-        // Function to close the modal
-        function closeModal(event) {
-            // Prevent default action if it's an <a> tag click
-            if (event && event.preventDefault) {
-                event.preventDefault();
-            }
-            const modal = document.getElementById('welcomeModal');
-            modal.classList.remove('show');
-            // Set a flag so the modal doesn't show again on reload (for this session)
-            sessionStorage.setItem('modalSeen', 'true');
-        }
+        <section class="blog-list" aria-label="Blog posts">
+            <div class="blog-grid">
 
-        function animateCards() {
-            const cards = document.querySelectorAll('.blog-card');
-            cards.forEach((card, index) => {
-                card.style.transitionDelay = `${index * 0.1}s`;
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            });
-        }
+                <article class="blog-post-card">
+                    <div class="meta"><span class="tag">Case Study</span> · 6 min read</div>
+                    <h2>Building a Role-Based Healthcare Booking Flow</h2>
+                    <p>How I approached appointment scheduling, patient roles, and access control for a
+                        healthcare-style web app — covering the architecture decisions and trade-offs in general
+                        terms, without disclosing client-specific details.</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </article>
 
-        function setupFiltering() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const blogCards = document.querySelectorAll('.blog-card');
+                <article class="blog-post-card">
+                    <div class="meta"><span class="tag">Tutorial</span> · 8 min read</div>
+                    <h2>JWT Authentication in a MERN App, Step by Step</h2>
+                    <p>A practical walkthrough of implementing secure JWT-based authentication and role-based
+                        authorization across RESTful APIs, based on what I built for the BookStore learning
+                        platform.</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </article>
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+                <article class="blog-post-card">
+                    <div class="meta"><span class="tag">SEO</span> · 5 min read</div>
+                    <h2>On-Page SEO Checklist for Developer Portfolios</h2>
+                    <p>The meta tags, heading hierarchy, canonical URLs, and schema markup I used to make this
+                        portfolio search-friendly — and how you can apply the same checklist to yours.</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </article>
 
-                    const filterValue = btn.getAttribute('data-filter');
+                <article class="blog-post-card">
+                    <div class="meta"><span class="tag">Backend</span> · 7 min read</div>
+                    <h2>Structuring a Laravel + MySQL Project for Long-Term Maintainability</h2>
+                    <p>Patterns I follow for migrations, model relationships, and route organization when starting a
+                        new Laravel project from scratch.</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </article>
 
-                    blogCards.forEach(card => {
-                        const cardCategory = card.getAttribute('data-category');
+                <article class="blog-post-card">
+                    <div class="meta"><span class="tag">Project Notes</span> · 6 min read</div>
+                    <h2>Adding an AI Chatbot to a Flask Web App</h2>
+                    <p>Lessons from wiring up a basic AI-assisted chatbot into the Next-Gen Digi-Health project,
+                        including what I'd do differently next time.</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </article>
 
-                        if (filterValue === 'all' || filterValue === cardCategory) {
-                            card.style.display = 'block';
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 50);
-                        } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 400);
-                        }
-                    });
-                });
-            });
+                <article class="blog-post-card">
+                    <div class="meta"><span class="tag">Career</span> · 4 min read</div>
+                    <h2>What I Learned Interning at Alpha Media</h2>
+                    <p>Reflections from my Web Designing internship — deploying real client sites via cPanel and
+                        working within agency timelines.</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </article>
 
-            // Event listener for the close button
-            document.querySelector('.close-btn').addEventListener('click', closeModal);
-        }
+            </div>
+        </section>
+    </main>
 
-        document.addEventListener('DOMContentLoaded', () => {
-            animateCards();
-            setupFiltering();
-            // Show the modal after all elements are loaded
-            showModal();
-        });
-    </script>
+    <footer>
+        <div class="footer">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=100068092726962" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://github.com/Sarvjeet987" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/sarvjeet_k.s/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/%F0%9D%97%A6%F0%9D%97%AE%F0%9D%97%BF%F0%9D%98%83%F0%9D%97%B7%F0%9D%97%B2%F0%9D%97%B2%F0%9D%98%81-%F0%9D%97%9E%F0%9D%98%82%F0%9D%97%BA%F0%9D%97%AE%F0%9D%97%BF-4b0488251/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/@techsarvjeet123" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-square-youtube"></i></a>
+            </div>
+            <div class="text">
+                <p>© 2026 Crafted with care by <a href="index.html">Sarvjeet Kumar</a>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
+    <script src="script.js"></script>
 </body>
 
 </html>
-
-
-
-
