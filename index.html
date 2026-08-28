@@ -2,629 +2,894 @@
 <html lang="en">
 
 <head>
-    <!-- Basic -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Title -->
-    <title>Sarvjeet Kumar | Web Developer Portfolio</title>
-
-    <!-- SEO Description -->
-    <meta name="description" content="Sarvjeet Kumar – Computer Science student and web developer. Explore my portfolio, projects, skills, and contact details.">
-
-    <!-- SEO Keywords -->
-    <meta name="keywords" content="Sarvjeet Kumar, Web Developer, Portfolio, Frontend Developer, Full Stack Developer, HTML, CSS, JavaScript, React">
-
-    <!-- Author -->
+    <!-- Primary SEO -->
+    <title>Sarvjeet Kumar | Full Stack Web Developer in Delhi, India</title>
+    <meta name="title" content="Sarvjeet Kumar | Full Stack Web Developer in Delhi, India">
+    <meta name="description"
+        content="Portfolio of Sarvjeet Kumar, a Full Stack Web Developer based in New Delhi specializing in PHP, Laravel, MySQL, React.js and the MERN stack. Explore projects, experience, and get in touch for freelance or full-time roles.">
+    <meta name="keywords"
+        content="Sarvjeet Kumar, Sarvjeet Kumar portfolio, Full Stack Developer Delhi, PHP Laravel Developer, MERN Stack Developer, Web Developer New Delhi, Frontend Developer Portfolio, React Developer India">
     <meta name="author" content="Sarvjeet Kumar">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sarvjeet987.github.io/portfolio/" />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://sarvjeet987.github.io/portfolio/">
-
-    <!-- Open Graph (Facebook, LinkedIn) -->
-    <meta property="og:title" content="Sarvjeet Kumar | Web Developer Portfolio">
-    <meta property="og:description" content="Explore my portfolio, projects, and skills in web development.">
-    <meta property="og:url" content="https://sarvjeet987.github.io/portfolio/">
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://sarvjeet987.github.io/portfolio/circular_sarvjeetIMG.png">
+    <meta property="og:url" content="https://sarvjeet987.github.io/portfolio/">
+    <meta property="og:title" content="Sarvjeet Kumar | Full Stack Web Developer in Delhi, India">
+    <meta property="og:description"
+        content="Full Stack Web Developer specializing in PHP, Laravel, MySQL, React.js and the MERN stack. See projects, experience, and skills.">
+    <meta property="og:image" content="https://sarvjeet987.github.io/portfolio/og-image.jpg">
+    <meta property="og:locale" content="en_IN">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sarvjeet Kumar | Web Developer Portfolio">
-    <meta name="twitter:description" content="Computer Science student & web developer portfolio.">
-    <meta name="twitter:image" content="https://sarvjeet987.github.io/portfolio/circular_sarvjeetIMG.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sarvjeet987.github.io/portfolio/">
+    <meta property="twitter:title" content="Sarvjeet Kumar | Full Stack Web Developer in Delhi, India">
+    <meta property="twitter:description"
+        content="Full Stack Web Developer specializing in PHP, Laravel, MySQL, React.js and the MERN stack.">
+    <meta property="twitter:image" content="https://sarvjeet987.github.io/portfolio/og-image.jpg">
 
-    <!-- Styles -->
+    <meta name="theme-color" content="#021326">
+
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="fav-icon.png">
+
+    <!-- Structured data: Person + WebSite (E-E-A-T signals for search engines) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sarvjeet Kumar",
+      "url": "https://sarvjeet987.github.io/portfolio/",
+      "image": "https://sarvjeet987.github.io/portfolio/e.jpg",
+      "jobTitle": "Full Stack Web Developer",
+      "email": "mailto:techsarvjeet123@gmail.com",
+      "telephone": "+91-8651465896",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New Delhi",
+        "addressCountry": "IN"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Rungta College of Engineering and Technology"
+      },
+      "knowsAbout": ["PHP", "Laravel", "MySQL", "JavaScript", "React.js", "Node.js", "MongoDB", "WordPress", "SEO"],
+      "sameAs": [
+        "https://github.com/Sarvjeet987",
+        "https://www.linkedin.com/in/%F0%9D%97%A6%F0%9D%97%AE%F0%9D%97%BF%F0%9D%98%83%F0%9D%97%B7%F0%9D%97%B2%F0%9D%97%B2%F0%9D%98%81-%F0%9D%97%9E%F0%9D%98%82%F0%9D%97%BA%F0%9D%97%AE%F0%9D%97%BF-4b0488251/",
+        "https://www.instagram.com/sarvjeet_k.s/",
+        "https://www.facebook.com/profile.php?id=100068092726962",
+        "https://www.youtube.com/@techsarvjeet123"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TechSarvjeet — Sarvjeet Kumar Portfolio",
+      "url": "https://sarvjeet987.github.io/portfolio/"
+    }
+    </script>
 </head>
 
 <body>
-    <div id="welcomeModal" class="welcome-modal">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Welcome modal -->
+    <div id="welcomeModal" class="welcome-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
-            <button class="close-btn" aria-label="Close Modal">&times;</button>
-            <h3 class="modal-title">👋 Welcome to My Portfolio!</h3>
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close welcome dialog">&times;</button>
+            <div class="modal-status">
+                <span class="status-dot"></span> Available for opportunities
+            </div>
+            <div class="modal-avatar-ring">
+                <span>SK</span>
+            </div>
+            <h3 class="modal-title" id="modalTitle">Welcome to my portfolio 👋</h3>
             <div class="modal-body">
-                <p>Thanks for visiting! I'm a Frontend Engineer currently working with Gencare New
-                    Delhi.</p>
-                <p>Dive into my latest work, technical case studies, and student projects in the Blog/Insights
-                    section.</p>
+                <p>I'm Sarvjeet, a Full Stack Web Developer based in New Delhi working with PHP, Laravel, and the
+                    MERN stack.</p>
+                <p>Take a look at my projects and experience below, or read the Blog for write-ups on what I've been
+                    building.</p>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="modal-btn modal-btn-primary" id="modalViewProjects">View Projects</button>
+                <button type="button" class="modal-btn modal-btn-outline" id="modalCloseBtn2">Continue Browsing</button>
             </div>
         </div>
     </div>
-    <nav>
+
+    <!-- Success toast (shown after contact form submits) -->
+    <div id="successToast" class="success-toast" role="status" aria-live="polite">
+        <div class="success-toast-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
+        <div class="success-toast-body">
+            <strong>Message sent!</strong>
+            <span>Thanks for reaching out — Sarvjeet will get back to you soon.</span>
+        </div>
+        <button type="button" class="success-toast-close" id="successToastClose" aria-label="Dismiss notification">&times;</button>
+    </div>
+
+    <!-- Nav -->
+    <nav aria-label="Primary navigation">
         <div class="logo">
-            <h1>𝕿𝖊𝖈𝖍𝕾𝖆𝖗𝖛𝖏𝖊𝖊𝖙</h1>
+            <a href="#hom" aria-label="TechSarvjeet home">
+                <h1>Tech<span class="logo-dot">Sarvjeet</span></h1>
+            </a>
         </div>
         <ul id="menuList">
-            <a href="#" style="text-decoration: none;">
-                <li style="color: #fff; border-bottom: 1px solid red;">Home</li>
-            </a>
-            <a href="#about">
-                <li class="cool-link">About Us</li>
-            </a>
-            <a href="#servisess">
-                <li class="cool-link">Services</li>
-            </a>
-            <a href="#proj">
-                <li class="cool-link">Project</li>
-            </a>
-            <a href="blog.html" target="__blank">
-                <li class="cool-link">Blog</li>
-            </a>
-            <a href="#contactME">
-                <li class="cool-link">Contact</li>
-            </a>
-            <a href="#contactME">
-                <button id="hireBtn"
-                    style="padding: 5px 10px; text-align: center; color: rgba(255, 255, 255, 0.6);font-weight: 500;font-size: 14px;letter-spacing: 0.08rem;  background-color: #021326; border: 1px solid #f71735; border-radius: 5px ;cursor: pointer; margin-bottom: 4px;">HIRE
-                    ME</button>
-            </a>
+            <li><a href="#hom" class="cool-link active">Home</a></li>
+            <li><a href="#about" class="cool-link">About</a></li>
+            <li><a href="#experience" class="cool-link">Experience</a></li>
+            <li><a href="#servisess" class="cool-link">Services</a></li>
+            <li><a href="#proj" class="cool-link">Projects</a></li>
+            <li><a href="blog.html" class="cool-link">Blog</a></li>
+            <li><a href="#contactME" class="cool-link">Contact</a></li>
+            <li><a href="#contactME"><button id="hireBtn">Hire Me</button></a></li>
         </ul>
-        <div class="menuIcon">
-            <i class="fa-solid fa-bars" onclick="ToggleMenu()"></i>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+            <div class="menuIcon">
+                <button id="menuToggleBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="menuList">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- section-1 - Home-->
-    <section id="hom">
-        <div class="home">
-            <div class="homeText">
-                <h6>Hi There, I'm</h6>
-                <h1>Sarvjeet Kumar</h1>
-                <div class="bottomLine"></div>
-                <div id="app"></div>
-                <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
-                <p>I build fast, modern, and accessible web interfaces using the latest frontend technologies. My focus
-                    is on delivering pixel-perfect designs, smooth user experiences, and high-performance web
-                    applications that align with 2026 industry standards.</p>
-                <a href="#contactME"><button>Hire Me !</button></a>
-
-            </div>
-            <div class="homeIMG" data-aos="fade-up" data-aos-duration="3000">
-                <!-- <img src="/sk.png" alt="mypictuer" height="400" width="400"> -->
-            </div>
-        </div>
-    </section>
-    <!-- section - 2 - About -->
-    <section id="about">
-        <div class="about-1">
-            <div class="about-title">
-                <div class="line"></div>
-                <h2>About Me</h2>
-                <div class="line"></div>
-            </div>
-            <div class="about-2">
-                <div class="aboutIMG" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-                    <img src="e.jpg" alt="Sarvjeet Kumar Web Developer Portfolio" width="400" height="500">
+    <main id="main-content">
+        <!-- Hero -->
+        <section id="hom" aria-label="Introduction">
+            <div class="home">
+                <div class="homeText">
+                    <span class="eyebrow-mono">&lt;/&gt; hello, world</span>
+                    <h1>Sarvjeet Kumar</h1>
+                    <div class="bottomLine"></div>
+                    <div id="app" aria-live="polite"></div>
+                    <p>I build fast, accessible, and SEO-friendly web applications using PHP, Laravel, and the MERN
+                        stack. Currently based in New Delhi, focused on turning real business problems into clean,
+                        reliable, production-ready software.</p>
+                    <div class="hero-ctas">
+                        <a href="#contactME"><button class="btn-primary">Hire Me</button></a>
+                        <a href="https://drive.google.com/file/d/1IvRXbjgb6ktro1CJtRo--YtNU-hYTtOW/view"
+                            target="_blank" rel="noopener noreferrer" class="btn-outline">Download Resume</a>
+                    </div>
+                    <div class="hero-meta">
+                        <div><strong>3+</strong>Years of hands-on coding</div>
+                        <div><strong>10+</strong>Projects shipped</div>
+                        <div><strong>New Delhi</strong>Based in, IN</div>
+                    </div>
                 </div>
-                <div class="aboutText">
-                    <div class="about-me">
-                        <h2>About Me</h2>
-                        <p class="intro">
-                            <strong>Hello, my name is <u>Sarvjeet</u></strong> and I am <u>front-end
-                                developer</u>
-                        </p>
-                        <p class="description">
-                            I'm <strong>Sarvjeet</strong>, a passionate Frontend Developer based in New Delhi, India,
-                            currently pursuing
-                            my <strong> B.Tech</strong> in <strong>Computer Science</strong>.
-                            <br><br>
-                            With <strong>hands-on experience</strong> in building responsive, interactive, and scalable
-                            web applications,
-                            I specialize in bridging <strong>design</strong> and <strong>development</strong>. I enjoy
-                            turning complex ideas into clean,
-                            intuitive user experiences while constantly learning new technologies that shape the modern
-                            web.
-                            <br><br>
-                            I believe in writing clean code, following <strong>UI/UX principles</strong>, and building
-                            products that users actually enjoy using.
-                        </p>
-
-                    </div>
-                    <div class="design-tools">
-                        <h2><span class="red-bar"></span> Design Tools</h2>
-                        <div class="tool-buttons">
-                            <span class="tool">Canva</span>
-                            <span class="tool">Figma</span>
-                            <span class="tool">Photoshop</span>
+                <div class="homeIMG" data-aos="fade-up" data-aos-duration="900">
+                    <div class="terminal" role="img" aria-label="Terminal window showing developer profile summary">
+                        <div class="terminal-bar">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                            <span class="terminal-title">sarvjeet@techsarvjeet:~</span>
                         </div>
-                    </div>
-                    <div class="skills-section">
-                        <h2><span class="red-bar"></span> Technologies and Skills</h2>
-                        <div class="skill-tags">
-                            <span class="skill">HTML:5</span>
-                            <span class="skill">CSS:3</span>
-                            <span class="skill">Java Script</span>
-                            <span class="skill">React.Js</span>
-                            <span class="skill">Node JS</span>
-                            <span class="skill">Express JS</span>
-                            <span class="skill">MongoDB</span>
-                            <span class="skill">Git & GitHub</span>
-                            <span class="skill">REST APIs</span>
-                            <span class="skill">Responsive UI/UX</span>
-                            <span class="skill">WordPress</span>
-                        </div>
-                    </div>
-                    <div class="work-process">
-                        <h2><span class="red-bar"></span> Work Process</h2>
-                        <div class="process-steps">
-                            <div class="step">
-                                <div class="circle">#01</div>
-                                <span>Research</span>
-                            </div>
-                            <div class="step">
-                                <div class="circle">#02</div>
-                                <span>Design</span>
-                            </div>
-                            <div class="step">
-                                <div class="circle">#03</div>
-                                <span>Development </span>
-                            </div>
-                            <div class="step">
-                                <div class="circle">#04</div>
-                                <span> Testing & Optimization </span>
-                            </div>
-                            <div class="step">
-                                <div class="circle">#05</div>
-                                <span> Deployment </span>
-                            </div>
-                            <div class="step">
-                                <div class="circle">#06</div>
-                                <a href="https://drive.google.com/file/d/1IvRXbjgb6ktro1CJtRo--YtNU-hYTtOW/view"
-                                    target="_blank">
-                                    <button
-                                        style="padding: 15px 10px; text-align: center; color: white;font-weight: 500;font-size: 14px;letter-spacing: 0.08rem;  background-color: #f71735; border: 1px solid #f71735; border-radius: 5px ;cursor: pointer; margin-bottom: 4px; transition: all 0.5s;"
-                                        class="resumeBTN">Download Resume</button>
-                                </a>
-                            </div>
+                        <div class="terminal-body">
+                            <div><span class="prompt">$</span> <span class="cmd">whoami</span></div>
+                            <div>&nbsp;&nbsp;<span class="key">name</span>: <span class="val">"Sarvjeet Kumar"</span></div>
+                            <div>&nbsp;&nbsp;<span class="key">role</span>: <span class="val">"Full Stack Web Developer"</span></div>
+                            <div>&nbsp;&nbsp;<span class="key">stack</span>: <span class="val">["PHP", "Laravel", "React", "Node"]</span></div>
+                            <div>&nbsp;&nbsp;<span class="key">location</span>: <span class="val">"New Delhi, IN"</span></div>
+                            <div class="comment">&nbsp;&nbsp;// open to freelance & full-time roles</div>
+                            <div class="terminal-status"><span class="status-dot"></span> status: available for opportunities</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- section-3 (services) -->
-        <section id="servisess">
-            <div class="section3">
-                <div class="servises-tittle">
+        </section>
+
+        <!-- About -->
+        <section id="about" aria-labelledby="aboutTitle">
+            <div class="about-1 section-pad">
+                <span class="section-eyebrow">Get to know me</span>
+                <div class="section-title">
                     <div class="line"></div>
-                    <h2>My Services</h2>
+                    <h2 id="aboutTitle">About Me</h2>
                     <div class="line"></div>
                 </div>
-                <div class="servisesCard">
-                    <div class="servisesCardTop" data-aos="fade-up" data-aos-duration="3000">
-                        <div class="card">
-                            <div class="icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Design Icon">
-                            </div>
-                            <h3>UI/UX-Focused Web Design</h3>
-                            <p>I design modern, user-centric interfaces that combine aesthetics with usability, ensuring
-                                every layout communicates effectively.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Layout Icon">
-                            </div>
-                            <h3>Custom Frontend Development</h3>
-                            <p>From landing pages to full-scale applications, I build fast, responsive, and
-                                SEO-optimized user interfaces.</p>
-                        </div>
-
-                        <div class="card">
-                            <div class="icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" alt="Simple Icon">
-                            </div>
-                            <h3>Interactive & Dynamic Websites</h3>
-                            <p>Creating smooth animations, transitions, and interactive experiences using React, GSAP,
-                                and modern JS features.</p>
+                <div class="about-2">
+                    <div class="aboutIMG" data-reveal>
+                        <div class="avatar-frame">
+                            <img src="e.jpg" alt="Sarvjeet Kumar, Full Stack Web Developer based in New Delhi" width="340" height="420"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="avatar-fallback" style="display:none;">SK</span>
                         </div>
                     </div>
-                    <div class="servisesCardBottom" data-aos="fade-up" data-aos-duration="2000">
-                        <div class="card">
-                            <div class="icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828940.png" alt="Mobile Icon">
-                            </div>
-                            <h3>Mobile-First Responsive Design</h3>
-                            <p>Ensuring every website works flawlessly across mobile, tablet, and desktop devices.</p>
+                    <div class="aboutText">
+                        <div class="about-me">
+                            <h2>Who I Am</h2>
+                            <p class="intro">
+                                <strong>Hello, I'm <u>Sarvjeet</u></strong> — a <u>Full Stack Web Developer</u> from
+                                New Delhi, India.
+                            </p>
+                            <p class="description">
+                                I'm a <strong>Computer Science (Data Science)</strong> undergraduate at Rungta College
+                                of Engineering &amp; Technology, graduating in 2026, with hands-on production
+                                experience building web applications in <strong>PHP, Laravel, and MySQL</strong>, as
+                                well as the <strong>MERN stack</strong> for personal and academic projects.
+                                <br><br>
+                                I specialize in translating real business requirements into clean, maintainable
+                                backend architecture and responsive, accessible frontend interfaces. I care about
+                                writing code that's easy to read a year later, following <strong>UI/UX
+                                principles</strong>, and shipping products people actually enjoy using.
+                                <br><br>
+                                Outside of client work, I run <strong>GangaSetu Technologies</strong>, a small
+                                software services venture where I take on web development and technical
+                                problem-solving projects end to end.
+                            </p>
                         </div>
 
-                        <div class="card">
-                            <div class="icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Bug Icon">
-                            </div>
-                            <h3>Performance Optimization</h3>
-                            <p>Improving website speed, accessibility, and search engine ranking with best 2025
-                                standards.</p>
+                        <div class="quick-facts">
+                            <div class="fact"><span>Based in</span><strong>New Delhi, India</strong></div>
+                            <div class="fact"><span>Currently</span><strong>Web Developer</strong></div>
+                            <div class="fact"><span>Education</span><strong>B.Tech CSE, 2026</strong></div>
+                            <div class="fact"><span>Focus</span><strong>PHP · Laravel · MERN</strong></div>
                         </div>
 
-                        <div class="card">
-                            <div class="icon">
-                                <img src="https://cdn-icons-png.flaticon.com/512/2991/2991108.png" alt="Options Icon">
+                        <div class="design-tools">
+                            <h2><span class="red-bar"></span> Design Tools</h2>
+                            <div class="tool-buttons">
+                                <span class="tool">Figma</span>
+                                <span class="tool">Canva</span>
+                                <span class="tool">Adobe Photoshop</span>
                             </div>
-                            <h3>API Integration & Frontend Architecture</h3>
-                            <p>Connecting backend services and building scalable frontend structures for long-term
-                                growth.</p>
+                        </div>
+
+                        <div class="skills-section">
+                            <h2><span class="red-bar"></span> Technologies &amp; Skills</h2>
+
+                            <div class="skills-group">
+                                <h4>Languages</h4>
+                                <div class="skill-tags">
+                                    <span class="skill">PHP</span>
+                                    <span class="skill">JavaScript (ES6+)</span>
+                                    <span class="skill">HTML5</span>
+                                    <span class="skill">CSS3</span>
+                                </div>
+                            </div>
+
+                            <div class="skills-group">
+                                <h4>Frontend</h4>
+                                <div class="skill-tags">
+                                    <span class="skill">React.js</span>
+                                    <span class="skill">Bootstrap</span>
+                                    <span class="skill">Responsive Web Design</span>
+                                </div>
+                            </div>
+
+                            <div class="skills-group">
+                                <h4>Backend &amp; Databases</h4>
+                                <div class="skill-tags">
+                                    <span class="skill">Laravel</span>
+                                    <span class="skill">Node.js</span>
+                                    <span class="skill">Express.js</span>
+                                    <span class="skill">MySQL</span>
+                                    <span class="skill">MongoDB</span>
+                                    <span class="skill">REST APIs</span>
+                                </div>
+                            </div>
+
+                            <div class="skills-group">
+                                <h4>CMS, Hosting &amp; SEO</h4>
+                                <div class="skill-tags">
+                                    <span class="skill">WordPress</span>
+                                    <span class="skill">cPanel</span>
+                                    <span class="skill">On-Page SEO</span>
+                                    <span class="skill">Technical SEO</span>
+                                    <span class="skill">Google Search Console</span>
+                                </div>
+                            </div>
+
+                            <div class="skills-group">
+                                <h4>Tools</h4>
+                                <div class="skill-tags">
+                                    <span class="skill">Git &amp; GitHub</span>
+                                    <span class="skill">VS Code</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="work-process">
+                            <h2><span class="red-bar"></span> How I Work</h2>
+                            <div class="process-steps">
+                                <div class="step">
+                                    <div class="circle">01</div>
+                                    <span>Research</span>
+                                </div>
+                                <div class="step">
+                                    <div class="circle">02</div>
+                                    <span>Design</span>
+                                </div>
+                                <div class="step">
+                                    <div class="circle">03</div>
+                                    <span>Development</span>
+                                </div>
+                                <div class="step">
+                                    <div class="circle">04</div>
+                                    <span>Testing &amp; Optimization</span>
+                                </div>
+                                <div class="step">
+                                    <div class="circle">05</div>
+                                    <span>Deployment</span>
+                                </div>
+                                <div class="step">
+                                    <a href="https://drive.google.com/file/d/1IvRXbjgb6ktro1CJtRo--YtNU-hYTtOW/view"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <button class="resumeBTN">Download Resume</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" aria-labelledby="experienceTitle">
+            <div class="experience-sec section-pad">
+                <span class="section-eyebrow">Where I've worked</span>
+                <div class="section-title">
+                    <div class="line"></div>
+                    <h2 id="experienceTitle">Experience</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item current">
+                        <div class="timeline-head">
+                            <h3>Web Developer</h3>
+                            <span class="timeline-date">Jan 2026 – Present</span>
+                        </div>
+                        <div class="timeline-role">New Delhi</div>
+                        <ul>
+                            <li>Building and maintaining production web applications using PHP, Laravel, and MySQL
+                                for a healthcare-focused organization.</li>
+                            <li>Working across the full backend lifecycle — database design, server-side logic, and
+                                API development — while collaborating with a cross-functional team.</li>
+                            <li>Delivering pixel-perfect, responsive layouts with a focus on reliability and
+                                cross-device consistency.</li>
+                        </ul>
+                        <div class="timeline-stack">
+                            <span>PHP</span><span>Laravel</span><span>MySQL</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-head">
+                            <h3>Web Designing Intern — Alpha Media</h3>
+                            <span class="timeline-date">Oct 2025 – Jan 2026</span>
+                        </div>
+                        <div class="timeline-role">New Delhi</div>
+                        <ul>
+                            <li>Developed Radiant Safety System, a corporate fire-safety website with structured
+                                service pages for fire suppression, detection, and gas-leakage systems.</li>
+                            <li>Designed and deployed KF Systems, a responsive corporate site for an institutional
+                                seating manufacturer showcasing a pan-India supply network.</li>
+                            <li>Managed end-to-end deployment via cPanel, keeping load times fast and uptime above
+                                99% across both client sites.</li>
+                        </ul>
+                        <div class="timeline-stack">
+                            <span>HTML/CSS</span><span>JavaScript</span><span>cPanel</span><span>WordPress</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="servisess" aria-labelledby="servicesTitle">
+            <div class="section3 section-pad">
+                <span class="section-eyebrow">What I offer</span>
+                <div class="section-title">
+                    <div class="line"></div>
+                    <h2 id="servicesTitle">My Services</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="servisesCard" data-aos="fade-up" data-aos-duration="900">
+                    <div class="card">
+                        <div class="icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="" role="presentation">
+                        </div>
+                        <h3>UI/UX-Focused Web Design</h3>
+                        <p>Modern, user-centric interfaces that combine aesthetics with usability, so every layout
+                            communicates clearly.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="" role="presentation">
+                        </div>
+                        <h3>Custom Full Stack Development</h3>
+                        <p>From landing pages to full applications, built with PHP/Laravel or the MERN stack —
+                            fast, responsive, and SEO-optimized.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" alt="" role="presentation">
+                        </div>
+                        <h3>Interactive &amp; Dynamic Websites</h3>
+                        <p>Smooth animations, transitions, and interactive experiences using React and modern
+                            JavaScript.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828940.png" alt="" role="presentation">
+                        </div>
+                        <h3>Mobile-First Responsive Design</h3>
+                        <p>Every website is built to work flawlessly across mobile, tablet, and desktop devices.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="" role="presentation">
+                        </div>
+                        <h3>Performance &amp; SEO Optimization</h3>
+                        <p>Improving site speed, accessibility, and search ranking following current on-page SEO
+                            best practices.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991108.png" alt="" role="presentation">
+                        </div>
+                        <h3>API Integration &amp; Architecture</h3>
+                        <p>Connecting backend services and structuring scalable frontend/backend architecture for
+                            long-term growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="proj" aria-labelledby="projectsTitle">
+            <div class="project section-pad">
+                <span class="section-eyebrow">Selected work</span>
+                <div class="section-title">
+                    <div class="line"></div>
+                    <h2 id="projectsTitle">Projects</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="projectCard" data-aos="fade-up" data-aos-duration="900">
+
+                    <div class="case-card">
+                        <div class="case-card-head">
+                            <i class="fa-solid fa-book-open-reader" aria-hidden="true"></i>
+                            <div>
+                                <div class="name">BookStore — Online Learning Platform</div>
+                                <div class="tagline">MERN Stack · Dec 2024 – Feb 2025</div>
+                            </div>
+                        </div>
+                        <div class="case-block">
+                            <h4>Problem</h4>
+                            <p>Students needed one place to discover curated books and structured free/premium
+                                courses instead of scattered resources.</p>
+                        </div>
+                        <div class="case-block">
+                            <h4>Solution</h4>
+                            <p>Built a full-stack MERN platform with secure JWT-based authentication and RESTful
+                                APIs across 5+ data models, backed by MongoDB.</p>
+                        </div>
+                        <div class="case-block">
+                            <h4>Impact</h4>
+                            <p>Structured schemas support 100+ learning resources with role-based access control.</p>
+                        </div>
+                        <div class="case-stack">
+                            <span>MongoDB</span><span>Express.js</span><span>React.js</span><span>Node.js</span>
+                        </div>
+                        <div class="case-card-footer">
+                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/portfolio">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-head">
+                            <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
+                            <div>
+                                <div class="name">Next-Gen Digi-Health</div>
+                                <div class="tagline">Python · Flask · MongoDB · Apr – May 2026</div>
+                            </div>
+                        </div>
+                        <div class="case-block">
+                            <h4>Problem</h4>
+                            <p>Patients often deal with fragmented, offline processes for appointments,
+                                prescriptions, and pharmacy access.</p>
+                        </div>
+                        <div class="case-block">
+                            <h4>Solution</h4>
+                            <p>Built an AI-assisted hospital management web app covering online appointments,
+                                digital prescriptions, e-pharmacy, and lab tests, with a Flask + MongoDB backend and
+                                role-based authentication.</p>
+                        </div>
+                        <div class="case-block">
+                            <h4>Impact</h4>
+                            <p>Added a basic AI health chatbot for 24/7 patient assistance on a responsive
+                                HTML/CSS/JS frontend.</p>
+                        </div>
+                        <div class="case-stack">
+                            <span>Python</span><span>Flask</span><span>MongoDB</span><span>JavaScript</span>
+                        </div>
+                        <div class="case-card-footer">
+                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/WebTech">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-head">
+                            <i class="fa-solid fa-shield-dog" aria-hidden="true"></i>
+                            <div>
+                                <div class="name">VetCare Appointment System</div>
+                                <div class="tagline">Full Stack Web App</div>
+                            </div>
+                        </div>
+                        <div class="case-block">
+                            <h4>Problem</h4>
+                            <p>Pet owners and clinics lacked a simple way to schedule and track veterinary
+                                appointments online.</p>
+                        </div>
+                        <div class="case-block">
+                            <h4>Solution</h4>
+                            <p>Built a web-based booking platform allowing users to book, manage, and track pet
+                                healthcare schedules end to end.</p>
+                        </div>
+                        <div class="case-stack">
+                            <span>JavaScript</span><span>HTML/CSS</span><span>Backend API</span>
+                        </div>
+                        <div class="case-card-footer">
+                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/VetEase">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-head">
+                            <i class="fa-brands fa-shopify" aria-hidden="true"></i>
+                            <div>
+                                <div class="name">V-Shop E-Commerce</div>
+                                <div class="tagline">Full Stack Web App</div>
+                            </div>
+                        </div>
+                        <div class="case-block">
+                            <h4>Solution</h4>
+                            <p>A complete e-commerce application with product browsing, a cart system, wishlist,
+                                order tracking, and secure checkout.</p>
+                        </div>
+                        <div class="case-stack">
+                            <span>JavaScript</span><span>HTML/CSS</span><span>Checkout Flow</span>
+                        </div>
+                        <div class="case-card-footer">
+                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/v-shop">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-head">
+                            <i class="fa-solid fa-computer" aria-hidden="true"></i>
+                            <div>
+                                <div class="name">IndiaNewsHub</div>
+                                <div class="tagline">Web App</div>
+                            </div>
+                        </div>
+                        <div class="case-block">
+                            <h4>Solution</h4>
+                            <p>A one-stop platform for India's top newspapers in English and regional languages, so
+                                readers don't need to jump between sites.</p>
+                        </div>
+                        <div class="case-stack">
+                            <span>JavaScript</span><span>API Integration</span>
+                        </div>
+                        <div class="case-card-footer">
+                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/WebTech">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-head">
+                            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                            <div>
+                                <div class="name">KnowledgeHub</div>
+                                <div class="tagline">Web App</div>
+                            </div>
+                        </div>
+                        <div class="case-block">
+                            <h4>Solution</h4>
+                            <p>A digital learning platform for university students to access study materials, notes,
+                                and resources in an organized way.</p>
+                        </div>
+                        <div class="case-stack">
+                            <span>JavaScript</span><span>HTML/CSS</span>
+                        </div>
+                        <div class="case-card-footer">
+                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/KnowledgeHub">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            </button>
                         </div>
                     </div>
 
                 </div>
             </div>
         </section>
-        <!-- section-4 (project) -->
-        <section id="proj">
-            <div class="project">
-                <div class="project-tittle">
-                    <div class="line"></div>
-                    <h2>Project</h2>
-                    <div class="line"></div>
-                </div>
 
-                <div class="projectCard">
-                    <div class="projectCardSection1" data-aos="fade-down" data-aos-easing="linear"
-                        data-aos-duration="1500">
-
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fa-solid fa-briefcase"></i>
-                                <div class="card-content">
-                                    <div class="name">Portfolio website</div>
-                                    <p>
-                                        A personal portfolio built with HTML, CSS, and JavaScript, showcasing my skills,
-                                        projects, and experience with a strong focus on UI/UX and responsive design...!
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="card-footer">
-                                <button class="proj-btn"
-                                    data-link="https://github.com/Sarvjeet987/portfolio">Click</button>
-                            </div>
-                        </div>
-
- <div class="card">
-                            <div class="card-header">
-                                <i class="fa-brands fa-airbnb"></i>
-                                <div class="card-content">
-                                    <div class="name">AutoSleep Smart Device Controller</div>
-                                    <p>
-                                        A central dashboard to control electronic devices with automated scheduling,
-                                        timers, and energy-efficient settings...!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button class="proj-btn"
-                                    data-link="https://github.com/Sarvjeet987/Electronic-Devices-Management-System">Click</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fa-solid fa-computer"></i>
-                                <div class="card-content">
-                                    <div class="name">IndiaNewsHub</div>
-                                    <p>
-                                        Stay informed with IndiaNewsHub your one-stop platform for India’s top
-                                        newspapers
-                                        in English and regional languages. No more jumping between sites...!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button class="proj-btn"
-                                    data-link="https://github.com/Sarvjeet987/WebTech">Click</button>
-                            </div>
-                        </div>
-
-
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fa-solid fa-book-open-reader"></i>
-                                <div class="card-content">
-                                    <div class="name">Bookstore</div>
-                                    <p>
-                                       A modern platform providing free and premium books for smart learning....!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button class="proj-btn"
-                                    data-link="https://github.com/Sarvjeet987/bookstore/tree/main">Click</button>
-                            </div>
-                        </div>
-
-
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fa-solid fa-shield-dog"></i>
-                                <div class="card-content">
-                                    <div class="name">VetCare Appointment System</div>
-                                    <p>
-                                        A web-based veterinary appointment booking platform allowing users to book,
-                                        manage, and track pet healthcare schedules...!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button class="proj-btn"
-                                    data-link="https://github.com/Sarvjeet987/VetEase">Click</button>
-                            </div>
-                        </div>
-
-
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fa-brands fa-shopify"></i>
-                                <div class="card-content">
-                                    <div class="name">V-Shop E-Commerce</div>
-                                    <p>
-                                        A complete e-commerce web application with product browsing, cart system,
-                                        wishlist, order tracking, and secure checkout...!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button class="proj-btn"
-                                    data-link="https://github.com/Sarvjeet987/v-shop">Click</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Project Access Popup -->
-        <div id="projectAccessPopup" class="proj-popup-overlay">
+        <!-- Project access popup -->
+        <div id="projectAccessPopup" class="proj-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="projPopupTitle">
             <div class="proj-popup-box">
-                <h2>Enter Your Full Name</h2>
+                <h2 id="projPopupTitle">Enter Your Full Name</h2>
+                <label for="projUserName" class="visually-hidden">Full name</label>
                 <input type="text" id="projUserName" placeholder="Full Name..." />
-                <p id="proj-error-msg"></p>
-
+                <p id="proj-error-msg" role="alert"></p>
                 <div class="proj-popup-actions">
                     <button id="projSubmitBtn">Submit</button>
-                    <button id="projCloseBtn" class="close-btn">Cancel</button>
+                    <button id="projCloseBtn" class="close-text-btn">Cancel</button>
                 </div>
             </div>
         </div>
-        <!-- section-5 (education) -->
-        <section>
-            <div class="education">
-                <div class="education-tittle">
+
+        <!-- Education -->
+        <section aria-labelledby="educationTitle">
+            <div class="education section-pad">
+                <span class="section-eyebrow">Academics</span>
+                <div class="section-title">
                     <div class="line"></div>
-                    <h2>Education</h2>
+                    <h2 id="educationTitle">Education</h2>
                     <div class="line"></div>
                 </div>
                 <div class="educationCard">
                     <div class="experience-card">
-                        <div class="date-tag">2022 - 2026</div>
+                        <div class="date-tag">2022 – 2026</div>
                         <div class="content">
                             <h3>Bachelor of Technology (CSE)</h3>
-                            <p>Rungta College of Engineering & Technology</p>
-                            <div class="location">- Bhiali , Chhattisgarh</div>
+                            <p>Rungta College of Engineering &amp; Technology</p>
+                            <div class="location">Bhilai, Chhattisgarh</div>
                         </div>
                     </div>
-                    <div class="experience-card" style="margin-top: 25px;">
-                        <div class="date-tag">2020 - 2022</div>
+                    <div class="experience-card" style="margin-top: 20px;">
+                        <div class="date-tag">2020 – 2022</div>
                         <div class="content">
-                            <h3>Intermediate (Science) </h3>
-                            <p>R. Jha college</p>
-                            <div class="location">- Sitamarhi , Bihar</div>
+                            <h3>Intermediate (Science)</h3>
+                            <p>R. Jha College</p>
+                            <div class="location">Sitamarhi, Bihar</div>
                         </div>
                     </div>
-                    <div class="experience-card" style="margin-top: 25px;">
-                        <div class="date-tag">2018 - 2020</div>
+                    <div class="experience-card" style="margin-top: 20px;">
+                        <div class="date-tag">2018 – 2020</div>
                         <div class="content">
                             <h3>High School</h3>
                             <p>Sitamarhi High School</p>
-                            <div class="location">- Dumra , Sitamarhi , Bihar</div>
+                            <div class="location">Dumra, Sitamarhi, Bihar</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- section-6 (testimonial) -->
-        <section>
-            <div class="testimonials">
-                <div class="testimonials-tittle">
+        <!-- Testimonials -->
+        <section aria-labelledby="testimonialsTitle">
+            <div class="testimonials section-pad">
+                <span class="section-eyebrow">Kind words</span>
+                <div class="section-title">
                     <div class="line"></div>
-                    <h2>Testimonials</h2>
+                    <h2 id="testimonialsTitle">Testimonials</h2>
                     <div class="line"></div>
                 </div>
-                <div class="testimonial-card" data-aos="fade-right" data-aos-duration="1500">
-                    <img src="circular_sarvjeetIMG.png" alt="Sarvjeet Kumar Web Developer Portfolio">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-duration="900">
+                    <img src="circular_sarvjeetIMG.png" alt="Sarvjeet Kumar" loading="lazy"
+                        onerror="this.style.display='none';">
                     <div class="testimonial-content">
-                        <h3 style="margin-bottom: 10px;">𝕾𝖆𝖗𝖛𝖏𝖊𝖊𝖙,</h3>
-                        <span>Frontend Engineer !</span>
+                        <h3>Alpha Media</h3>
+                        <span>Web Designing Internship, New Delhi</span>
                         <p>
-                            "Working with Sarvjeet has been an amazing experience. His attention to detail, creativity,
-                            and ability to convert ideas into real, functional interfaces is outstanding. A skilled
-                            frontend developer with a bright future."
+                            "Sarvjeet's attention to detail and ability to convert design ideas into real,
+                            functional interfaces stood out during his internship. A dependable developer with a
+                            strong grasp of both frontend craft and deployment fundamentals."
                         </p>
-                        <i class="fa-solid fa-heart fa-beat"></i>
-                        <i class="fa-solid fa-heart fa-beat"></i>
-                        <i class="fa-solid fa-heart fa-beat"></i>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- section-7(certificate) -->
-        <section>
-            <div class="cetificate">
-                <div class="certificate-tittle">
+        <!-- Certificates -->
+        <section aria-labelledby="certTitle">
+            <div class="cetificate section-pad">
+                <span class="section-eyebrow">Verified credentials</span>
+                <div class="section-title">
                     <div class="line"></div>
-                    <h2>Certificate</h2>
+                    <h2 id="certTitle">Certificates</h2>
                     <div class="line"></div>
                 </div>
-                <div class="certificate-card">
+                <div class="certificate-card" data-aos="fade-up" data-aos-duration="900">
 
-                    <!-- Card 1 -->
                     <div class="card">
                         <div class="card-image">
-                            <img src="interIMG.png" alt="Image 1">
+                            <img src="interIMG.png" alt="DataSoftixs Web Development Internship certificate awarded to Sarvjeet Kumar" loading="lazy">
                         </div>
                         <div class="card-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore e...</p>
-                            <a href="#">Read More</a>
+                            <h3>Web Development Internship</h3>
+                            <p>DataSoftixs IT Services — 4-week virtual internship covering real-world web
+                                development tasks and projects.</p>
                         </div>
                     </div>
 
-                    <!-- Card 2 -->
                     <div class="card">
                         <div class="card-image">
-                            <img src="hackindia.png" alt="Image 2">
-                            <img src="appreacition.png" alt="Image 2" style="margin-top: 25px;">
-                            <div class="date-badge">
-                            </div>
+                            <img src="hackindia.png" alt="HackIndia 2025 Certificate of Participation for Sarvjeet Kumar" loading="lazy">
+                            <img src="appreacition.png" alt="DevTown Certificate of Appreciation for community contribution" style="margin-top: 16px;" loading="lazy">
                         </div>
                         <div class="card-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore e...</p>
-                            <a href="#">Read More</a>
+                            <h3>HackIndia 2025 &amp; DevTown Appreciation</h3>
+                            <p>Participated in HackIndia 2025, India's Web3 &amp; AI hackathon, and recognized by
+                                DevTown for contributions to growing their developer community.</p>
                         </div>
                     </div>
 
-                    <!-- Card 3 -->
                     <div class="card">
                         <div class="card-image">
-                            <img src="cumpusA.png" alt="Image 3">
+                            <img src="cumpusA.png" alt="DevTown Campus Ambassador certification for Sarvjeet Kumar" loading="lazy">
                         </div>
                         <div class="card-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore e...</p>
-                            <a href="#">Read More</a>
+                            <h3>DevTown Campus Ambassador</h3>
+                            <p>Represented DevTown on campus, helping grow the student developer community and
+                                organizing tech engagement.</p>
                         </div>
                     </div>
 
                 </div>
-
             </div>
         </section>
-        <!-- section-8 (contact-me) -->
-        <section id="contactME">
-            <div class="contact-me">
-                <div class="contact-me-tittle">
+
+        <!-- Blog teaser -->
+        <section class="blog-teaser" aria-labelledby="blogTitle">
+            <div class="section-pad">
+                <span class="section-eyebrow">Latest writing</span>
+                <div class="section-title">
                     <div class="line"></div>
-                    <h2>Contact Me</h2>
+                    <h2 id="blogTitle">From the Blog</h2>
                     <div class="line"></div>
                 </div>
-                <div class="contact">
-                    <div class="contact-section">
+                <div class="blog-teaser-grid">
+                    <a href="blog.html" class="blog-teaser-card">
+                        <span class="tag">Case Study</span>
+                        <h3>Building a Role-Based Healthcare Booking Flow</h3>
+                        <p>Notes on structuring appointment scheduling and role-based access without naming
+                            client-confidential details.</p>
+                        <span class="read-more">Read more →</span>
+                    </a>
+                    <a href="blog.html" class="blog-teaser-card">
+                        <span class="tag">Tutorial</span>
+                        <h3>JWT Authentication in a MERN App, Step by Step</h3>
+                        <p>How I implemented secure JWT-based auth and RESTful APIs for the BookStore learning
+                            platform.</p>
+                        <span class="read-more">Read more →</span>
+                    </a>
+                    <a href="blog.html" class="blog-teaser-card">
+                        <span class="tag">SEO</span>
+                        <h3>On-Page SEO Checklist for Developer Portfolios</h3>
+                        <p>The exact meta tags, heading structure, and schema markup I used to make this portfolio
+                            search-friendly.</p>
+                        <span class="read-more">Read more →</span>
+                    </a>
+                </div>
+                <div class="blog-teaser-footer">
+                    <a href="blog.html" class="btn-outline homeText" style="display:inline-block;">
+                        <button class="resumeBTN" type="button" onclick="window.location.href='blog.html'">Visit the Blog</button>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-                        <!-- Contact Info -->
-                        <div class="contact-info">
-                            <h3>Email</h3>
-                            <p>techsarvjeet123@gmail.com</p>
-                            <h3 style="margin-top: 2rem;">website</h3>
-                            <p>https://sarvjeet987.github.io/portfolio/</p>
+        <!-- Contact -->
+        <section id="contactME" aria-labelledby="contactTitle">
+            <div class="contact-me section-pad">
+                <span class="section-eyebrow">Let's talk</span>
+                <div class="section-title">
+                    <div class="line"></div>
+                    <h2 id="contactTitle">Contact Me</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="contact-section">
 
-                            <h3 style="margin-top: 2rem;">Phone</h3>
-                            <p>+91 8651465896</p>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <p><a href="mailto:techsarvjeet123@gmail.com">techsarvjeet123@gmail.com</a></p>
 
-                            <div class="social-icons">
-                                <a href="https://www.facebook.com/profile.php?id=100068092726962" target="_blank"><i
-                                        class="fa-brands fa-facebook"></i></a> <!-- Facebook -->
-                                <a href="https://github.com/Sarvjeet987" target="_blank"><i
-                                        class="fa-brands fa-github"></i></a> <!-- Github -->
-                                <a href="https://www.instagram.com/sarvjeet_k.s/" target="_blank"><i
-                                        class="fa-brands fa-instagram"></i></a> <!-- Instagram -->
-                                <a href="https://www.linkedin.com/in/%F0%9D%97%A6%F0%9D%97%AE%F0%9D%97%BF%F0%9D%98%83%F0%9D%97%B7%F0%9D%97%B2%F0%9D%97%B2%F0%9D%98%81-%F0%9D%97%9E%F0%9D%98%82%F0%9D%97%BA%F0%9D%97%AE%F0%9D%97%BF-4b0488251/"
-                                    target="_blank"><i class="fa-brands fa-linkedin"></i></a> <!-- LinkedIn -->
-                                <a href="https://www.youtube.com/@techsarvjeet123" target="_blank"><i
-                                        class="fa-brands fa-square-youtube"></i></a> <!-- youtube -->
-                            </div>
+                        <h3 style="margin-top: 1.6rem;">Website</h3>
+                        <p><a href="https://sarvjeet987.github.io/portfolio/" target="_blank" rel="noopener noreferrer">sarvjeet987.github.io/portfolio</a></p>
+
+                        <h3 style="margin-top: 1.6rem;">Phone</h3>
+                        <p><a href="tel:+918651465896">+91 8651465896</a></p>
+
+                        <h3 style="margin-top: 1.6rem;">Native Address</h3>
+                        <div class="address-card">
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            <address>
+                                Village Bhagwanpur Chaube<br>
+                                Post &amp; Police Station: Bajpatti<br>
+                                District Sitamarhi, Bihar<br>
+                                PIN 843314, India
+                            </address>
                         </div>
 
-                        <!-- Contact Form -->
-                        <div class="contact-form">
-                            <h3>Get In Touch</h3>
-                            <form id="contactForm" action="https://formspree.io/f/mldwooyg" method="POST">
-                                <div class="form-group">
-                                    <input type="text" name="name" placeholder="Name *" required>
-                                    <input type="email" name="email" placeholder="Email *" required>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/profile.php?id=100068092726962" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://github.com/Sarvjeet987" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.instagram.com/sarvjeet_k.s/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/%F0%9D%97%A6%F0%9D%97%AE%F0%9D%97%BF%F0%9D%98%83%F0%9D%97%B7%F0%9D%97%B2%F0%9D%97%B2%F0%9D%98%81-%F0%9D%97%9E%F0%9D%98%82%F0%9D%97%BA%F0%9D%97%AE%F0%9D%97%BF-4b0488251/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://www.youtube.com/@techsarvjeet123" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-square-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h3>Get In Touch</h3>
+                        <form id="contactForm" action="https://formspree.io/f/mldwooyg" method="POST" novalidate>
+                            <div class="form-group">
+                                <div class="input-icon-wrap">
+                                    <i class="fa-solid fa-user" aria-hidden="true"></i>
+                                    <label for="nameInput" class="visually-hidden">Name</label>
+                                    <input type="text" id="nameInput" name="name" placeholder="Name *" required>
                                 </div>
-                                <input type="text" name="subject" placeholder="Subject *" required>
-                                <textarea name="message" placeholder="Your message *" required></textarea>
-                                <button type="submit">Contact Us</button>
-                            </form>
-                        </div>
+                                <div class="input-icon-wrap">
+                                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                                    <label for="emailInput" class="visually-hidden">Email</label>
+                                    <input type="email" id="emailInput" name="email" placeholder="Email *" required>
+                                </div>
+                            </div>
+                            <div class="input-icon-wrap">
+                                <i class="fa-solid fa-pen" aria-hidden="true"></i>
+                                <label for="subjectInput" class="visually-hidden">Subject</label>
+                                <input type="text" id="subjectInput" name="subject" placeholder="Subject *" required>
+                            </div>
+                            <div class="input-icon-wrap input-icon-wrap--textarea">
+                                <i class="fa-solid fa-message" aria-hidden="true"></i>
+                                <label for="messageInput" class="visually-hidden">Message</label>
+                                <textarea id="messageInput" name="message" placeholder="Your message *" required></textarea>
+                            </div>
+                            <button type="submit" id="contactSubmitBtn">
+                                <span class="btn-label">Send Message</span>
+                                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                            <p class="form-status" id="formStatus" role="status"></p>
+                        </form>
                     </div>
-                </div>
-                <div class="map" style="margin-top: 3rem;" data-aos="fade-up" data-aos-duration="2000">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7005.711270866368!2d77.08175014347373!3d28.604107402720807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1b4e953b4309%3A0xb45f26efe72338e9!2sDashrath%20Puri%2C%20Delhi!5e0!3m2!1sen!2sin!4v1746639887293!5m2!1sen!2sin"
-                        style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
-        <!-- section-9 (Footer) -->
-        <footer>
-            <div class="footer">
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=100068092726962" target="_blank"><i
-                            class="fa-brands fa-facebook fa-beat"></i></a> <!-- Facebook -->
-                    <a href="https://github.com/Sarvjeet987" target="_blank"><i
-                            class="fa-brands fa-github fa-beat"></i></a>
-                    <!-- Github -->
-                    <a href="https://www.instagram.com/sarvjeet_k.s/" target="_blank"><i
-                            class="fa-brands fa-instagram fa-beat"></i></a> <!-- Instagram -->
-                    <a href="https://www.linkedin.com/in/%F0%9D%97%A6%F0%9D%97%AE%F0%9D%97%BF%F0%9D%98%83%F0%9D%97%B7%F0%9D%97%B2%F0%9D%97%B2%F0%9D%98%81-%F0%9D%97%9E%F0%9D%98%82%F0%9D%97%BA%F0%9D%97%AE%F0%9D%97%BF-4b0488251/"
-                        target="_blank"><i class="fa-brands fa-linkedin fa-beat"></i></a> <!-- LinkedIn -->
-                    <a href="https://www.youtube.com/@techsarvjeet123" target="_blank"><i
-                            class="fa-brands fa-square-youtube fa-beat"></i></a> <!-- youtube -->
-                </div>
-                <div class="text">
-                    <p>© 2024 Crafted with ❤️ <span style="color: #f71735;"> Sarvjeet Kumar</span> by. All Rights
-                        Reserved.</p>
-                </div>
+    </main>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=100068092726962" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://github.com/Sarvjeet987" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/sarvjeet_k.s/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/%F0%9D%97%A6%F0%9D%97%AE%F0%9D%97%BF%F0%9D%98%83%F0%9D%97%B7%F0%9D%97%B2%F0%9D%97%B2%F0%9D%98%81-%F0%9D%97%9E%F0%9D%98%82%F0%9D%97%BA%F0%9D%97%AE%F0%9D%97%BF-4b0488251/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/@techsarvjeet123" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-square-youtube"></i></a>
             </div>
+            <div class="text">
+                <p>© 2026 Crafted with care by <a href="#hom">Sarvjeet Kumar</a>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        </footer>
-
-
-
-
-        <!-- java script links -->
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init();
-        </script>
-        <script src="srcript.js"></script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
-
-
-
-
-
-
-
