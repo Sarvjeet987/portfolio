@@ -206,45 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .start();
     }
 
-    /* ---------------- Welcome modal ---------------- */
-    const modal = document.getElementById('welcomeModal');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const modalCloseBtn2 = document.getElementById('modalCloseBtn2');
-    const modalViewProjects = document.getElementById('modalViewProjects');
-
-    function showModal() {
-        if (modal && !sessionStorage.getItem('modalSeen')) {
-            // Small delay so the entrance animation is noticeable rather than instant
-            setTimeout(() => modal.classList.add('show'), 400);
-        }
-    }
-
-    function closeModal() {
-        if (modal) {
-            modal.classList.remove('show');
-            sessionStorage.setItem('modalSeen', 'true');
-        }
-    }
-
-    showModal();
-    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-    if (modalCloseBtn2) modalCloseBtn2.addEventListener('click', closeModal);
-    if (modalViewProjects) {
-        modalViewProjects.addEventListener('click', () => {
-            closeModal();
-            const projSection = document.getElementById('proj');
-            if (projSection) projSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
-        });
-    }
-
     /* ---------------- Project access popup ---------------- */
     let projectLinkToOpen = null;
     const projectButtons = document.querySelectorAll('.proj-btn');
