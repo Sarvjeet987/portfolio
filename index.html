@@ -78,6 +78,12 @@
       "url": "https://sarvjeet987.github.io/portfolio/"
     }
     </script>
+    <noscript>
+        <style>
+            .t-out, .t-end { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+            #termCmd::after { content: "whoami"; }
+        </style>
+    </noscript>
 </head>
 
 <body>
@@ -151,14 +157,15 @@
                             <span class="terminal-dot green"></span>
                             <span class="terminal-title">sarvjeet@techsarvjeet:~</span>
                         </div>
-                        <div class="terminal-body">
-                            <div><span class="prompt">$</span> <span class="cmd">whoami</span></div>
-                            <div>&nbsp;&nbsp;<span class="key">name</span>: <span class="val">"Sarvjeet Kumar"</span></div>
-                            <div>&nbsp;&nbsp;<span class="key">role</span>: <span class="val">"Full Stack Web Developer"</span></div>
-                            <div>&nbsp;&nbsp;<span class="key">stack</span>: <span class="val">["PHP", "Laravel", "React", "Node"]</span></div>
-                            <div>&nbsp;&nbsp;<span class="key">location</span>: <span class="val">"New Delhi, IN"</span></div>
-                            <div class="comment">&nbsp;&nbsp;// open to freelance & full-time roles</div>
-                            <div class="terminal-status"><span class="status-dot"></span> status: available for opportunities</div>
+                        <div class="terminal-body" id="terminalBody">
+                            <div class="t-line"><span class="prompt">$</span> <span class="cmd" id="termCmd" data-text="whoami"></span><span class="t-cursor" id="termCursorCmd"></span></div>
+                            <div class="t-line t-out"><span class="key">name</span>: <span class="val">"Sarvjeet Kumar"</span></div>
+                            <div class="t-line t-out"><span class="key">role</span>: <span class="val">"Full Stack Web Developer"</span></div>
+                            <div class="t-line t-out"><span class="key">stack</span>: <span class="val">["PHP", "Laravel", "React", "Node"]</span></div>
+                            <div class="t-line t-out"><span class="key">location</span>: <span class="val">"New Delhi, IN"</span></div>
+                            <div class="t-line t-out comment">// open to freelance &amp; full-time roles</div>
+                            <div class="t-line t-out terminal-status"><span class="status-dot"></span> status: available for opportunities</div>
+                            <div class="t-line t-end"><span class="prompt">$</span> <span class="t-cursor"></span></div>
                         </div>
                     </div>
                 </div>
@@ -176,11 +183,33 @@
                 </div>
                 <div class="about-2">
                     <div class="aboutIMG" data-reveal>
-                        <div class="avatar-frame">
-                            <img src="e.jpg" alt="Sarvjeet Kumar, Full Stack Web Developer based in New Delhi" width="340" height="420"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <span class="avatar-fallback" style="display:none;">SK</span>
-                        </div>
+                        <figure class="reel-card" id="reelCard">
+                            <div class="reel-glow" aria-hidden="true"></div>
+                            <div class="reel-frame" id="reelFrame">
+                                <video id="reelVideo" class="reel-video" muted loop playsinline preload="metadata"
+                                    aria-label="Short reel: Focused Developer Mindset, by Sarvjeet Kumar">
+                                    <source src="focused-developer-mindset.mp4#t=0.1" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+
+                                <div class="reel-fallback" id="reelFallback" hidden>
+                                    <span>SK</span>
+                                    <p>Video couldn't be loaded.</p>
+                                </div>
+
+                                <div class="reel-controls">
+                                    <button type="button" class="reel-btn" id="reelPlay" aria-label="Pause video"><i class="fa-solid fa-pause" aria-hidden="true"></i></button>
+                                    <button type="button" class="reel-btn reel-btn--hint" id="reelMute" aria-label="Unmute video"><i class="fa-solid fa-volume-xmark" aria-hidden="true"></i></button>
+                                </div>
+
+                                <button type="button" class="reel-center-play" id="reelCenter" aria-label="Play video" hidden><i class="fa-solid fa-play" aria-hidden="true"></i></button>
+
+                                <div class="reel-badge" aria-hidden="true"><span class="reel-dot"></span> Reel &middot; <span id="reelTime">0:17</span></div>
+
+                                <div class="reel-progress" id="reelProgress" aria-hidden="true"><span id="reelProgressFill"></span></div>
+                            </div>
+                            <figcaption class="reel-caption">Focused Developer Mindset &mdash; how I approach my work.</figcaption>
+                        </figure>
                     </div>
                     <div class="aboutText">
                         <div class="about-me">
@@ -457,8 +486,8 @@
                             <span>MongoDB</span><span>Express.js</span><span>React.js</span><span>Node.js</span>
                         </div>
                         <div class="case-card-footer">
-                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/portfolio">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            <button class="proj-btn" data-enc="kIKX9zHPwXEvGqBFvvhalMqIOCrJGbikznGzh0V+2ERKheaVQFuBXWieg/XB1jmexS16OtW5eF40A7KyuESHqPwr2XE=">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub <i class="fa-solid fa-lock proj-lock" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -491,8 +520,8 @@
                             <span>Python</span><span>Flask</span><span>MongoDB</span><span>JavaScript</span>
                         </div>
                         <div class="case-card-footer">
-                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/WebTech">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            <button class="proj-btn" data-enc="wxH5Hw2hEDRy70Tj+gYl3cumPyDAaKpF3spFEX2fWnfZwdh2XS3XZZOypB/NUuOWLt1MACNnF7x0cUwFPh6hRI3p">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub <i class="fa-solid fa-lock proj-lock" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -519,8 +548,8 @@
                             <span>JavaScript</span><span>HTML/CSS</span><span>Backend API</span>
                         </div>
                         <div class="case-card-footer">
-                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/VetEase">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            <button class="proj-btn" data-enc="PO0K9tbfEuxyMyUGacgvGfk6aNF3bdOG6BcW8iLLbHEI1Ga2Df0EiwIz7uyo0nSYKEZgrJJDB7IEkqbQ5stNq5gt">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub <i class="fa-solid fa-lock proj-lock" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -542,8 +571,8 @@
                             <span>JavaScript</span><span>HTML/CSS</span><span>Checkout Flow</span>
                         </div>
                         <div class="case-card-footer">
-                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/v-shop">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            <button class="proj-btn" data-enc="O9a8bpy9M9yVQpVptmcC7AfzHVsBVkkJ5itzkla2y8+TetKwVgPdm2ixFwBU0YDu3B0gZ4qL0gops9mOF7v2SNU=">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub <i class="fa-solid fa-lock proj-lock" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -565,8 +594,8 @@
                             <span>JavaScript</span><span>API Integration</span>
                         </div>
                         <div class="case-card-footer">
-                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/WebTech">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            <button class="proj-btn" data-enc="j8OHkinrGBNIHItJ0qh0IaeH+/icCgM69bpF1ISaQ72ce2ZWFFhRwW0QEFqPs7R0t8cDBfpsg5eyIeKl1WrLqW4R">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub <i class="fa-solid fa-lock proj-lock" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -588,8 +617,8 @@
                             <span>JavaScript</span><span>HTML/CSS</span>
                         </div>
                         <div class="case-card-footer">
-                            <button class="proj-btn" data-link="https://github.com/Sarvjeet987/KnowledgeHub">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+                            <button class="proj-btn" data-enc="Qiw/ZDB4ubZaLtNyYgk05qwAT/ssaTypTiafS7nfgvst61ThwPgLYQ+w5+2zaTlut3ERq5wZdqooXyswUW/d93wD1/CKi9E=">
+                                <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub <i class="fa-solid fa-lock proj-lock" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -598,17 +627,32 @@
             </div>
         </section>
 
-        <!-- Project access popup -->
-        <div id="projectAccessPopup" class="proj-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="projPopupTitle">
-            <div class="proj-popup-box">
-                <h2 id="projPopupTitle">Enter Your Full Name</h2>
-                <label for="projUserName" class="visually-hidden">Full name</label>
-                <input type="text" id="projUserName" placeholder="Full Name..." />
-                <p id="proj-error-msg" role="alert"></p>
-                <div class="proj-popup-actions">
-                    <button id="projSubmitBtn">Submit</button>
-                    <button id="projCloseBtn" class="close-text-btn">Cancel</button>
+        <!-- Project access (PIN gate) -->
+        <div id="pinOverlay" class="pin-overlay" role="dialog" aria-modal="true" aria-labelledby="pinTitle" aria-hidden="true">
+            <div class="pin-box" id="pinBox">
+                <button type="button" class="pin-close" id="pinClose" aria-label="Close">&times;</button>
+                <div class="pin-icon"><i class="fa-solid fa-lock" id="pinIcon" aria-hidden="true"></i></div>
+
+                <h2 class="when-idle" id="pinTitle">Private Repository</h2>
+                <h2 class="when-success">Access granted</h2>
+
+                <p class="pin-sub when-idle">Enter the 6-digit access PIN to view <strong id="pinProjectName">this project</strong> on GitHub.</p>
+                <p class="pin-sub when-success" id="pinSuccessText">Opening the repository on GitHub…</p>
+
+                <div class="pin-inputs when-idle" id="pinInputs">
+                    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="PIN digit 1">
+                    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="PIN digit 2">
+                    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="PIN digit 3">
+                    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="PIN digit 4">
+                    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="PIN digit 5">
+                    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="PIN digit 6">
                 </div>
+                <p class="pin-error when-idle" id="pinError" role="alert"></p>
+                <button type="button" class="pin-submit when-idle" id="pinSubmit">Unlock</button>
+
+                <a class="pin-open" id="pinOpenLink" href="#" target="_blank" rel="noopener noreferrer" hidden>Open on GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+
+                <p class="pin-help when-idle">Don't have a PIN? <a href="#contactME" id="pinRequest">Request access</a></p>
             </div>
         </div>
 
