@@ -80,6 +80,11 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
 
+    .reel-btn--hint,
+    .reel-dot {
+        animation: none !important;
+    }
+
     html,
     * {
         scroll-behavior: auto !important;
@@ -502,7 +507,7 @@ nav li {
 
 .homeText .btn-primary {
     background: var(--text-hi);
-    color: #011627;
+    color: var(--bg-0);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 40px -14px;
 }
 
@@ -653,6 +658,55 @@ nav li {
     100% { box-shadow: 0 0 0 0 rgba(40, 200, 64, 0); }
 }
 
+/* Terminal typing animation */
+.terminal-body .t-line {
+    min-height: 1.9em;
+}
+
+.terminal-body .t-out,
+.terminal-body .t-end {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+}
+
+.terminal-body .t-out {
+    padding-left: 20px;
+}
+
+.terminal-body .t-out.is-visible,
+.terminal-body .t-end.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+}
+
+.terminal-body .terminal-status {
+    display: flex;
+    margin-top: 8px;
+}
+
+.t-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.1em;
+    margin-left: 3px;
+    vertical-align: text-bottom;
+    background: #8fe388;
+    animation: cursorBlink 1s steps(1) infinite;
+}
+
+.t-cursor.is-hidden {
+    display: none;
+}
+
+@keyframes cursorBlink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+}
+
 @media (max-width:1080px) {
     .home {
         flex-wrap: wrap;
@@ -703,49 +757,230 @@ nav li {
     gap: 90px;
 }
 
+/* ---- About: reel video ---- */
 .aboutIMG {
     flex-shrink: 0;
+    align-self: flex-start;
+    position: sticky;
+    top: 96px;
 }
 
-.aboutIMG .avatar-frame {
-    width: 340px;
-    height: 420px;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-subtle);
-    background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-0) 100%);
-    box-shadow: var(--shadow-deep);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.reel-card {
     position: relative;
-    overflow: hidden;
+    width: min(100%, 320px, max(220px, 45vh));
+    margin: 0;
 }
 
-.aboutIMG .avatar-frame img {
+/* Tablet: a bit wider, still centered. Phone: full content width so the video's
+   left and right edges line up exactly with the text below it. */
+@media (max-width:1080px) {
+    .reel-card {
+        width: min(100%, 360px);
+    }
+}
+
+@media (max-width:600px) {
+    .reel-card {
+        width: 100%;
+    }
+}
+
+.reel-glow {
+    position: absolute;
+    inset: 6px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--brand-red));
+    filter: blur(28px);
+    opacity: 0.35;
+    z-index: 0;
+}
+
+.reel-frame {
+    position: relative;
+    z-index: 1;
+    aspect-ratio: 9 / 16;
+    border-radius: 28px;
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-0) 100%);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-deep);
+}
+
+/* soft top and bottom shading so the controls stay readable on any frame */
+.reel-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(2, 19, 38, 0.5) 0%, transparent 22%, transparent 68%, rgba(2, 19, 38, 0.7) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.reel-video {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    display: block;
+    cursor: pointer;
 }
 
-@media (max-width:1080px) {
-    .aboutIMG .avatar-frame {
-        height: auto;
-        aspect-ratio: 4 / 5;
-    }
-
-    .aboutIMG .avatar-frame img {
-        object-fit: contain;
-        object-position: center;
-    }
+.reel-controls {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    gap: 8px;
+    z-index: 3;
 }
 
-.aboutIMG .avatar-frame .avatar-fallback {
+.reel-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(2, 19, 38, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.reel-btn:hover {
+    background: var(--brand-red);
+    border-color: var(--brand-red);
+    transform: scale(1.06);
+}
+
+/* gentle pulse on the sound button until the visitor has used it */
+.reel-btn--hint {
+    animation: reelHint 2.2s ease-in-out infinite;
+}
+
+@keyframes reelHint {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(247, 23, 53, 0.55); }
+    60% { box-shadow: 0 0 0 9px rgba(247, 23, 53, 0); }
+}
+
+.reel-center-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 68px;
+    height: 68px;
+    margin: -34px 0 0 -34px;
+    border-radius: 50%;
+    border: none;
+    background: var(--brand-red);
+    color: #fff;
+    font-size: 24px;
+    padding-left: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    box-shadow: 0 10px 30px rgba(247, 23, 53, 0.45);
+    transition: transform 0.2s ease;
+}
+
+.reel-center-play:hover {
+    transform: scale(1.08);
+}
+
+.reel-center-play[hidden] {
+    display: none;
+}
+
+.reel-badge {
+    position: absolute;
+    left: 14px;
+    bottom: 18px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(2, 19, 38, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+}
+
+.reel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-red);
+    animation: statusPulse 2s infinite;
+}
+
+.reel-progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.22);
+    z-index: 3;
+}
+
+.reel-progress span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--brand-red);
+}
+
+.reel-caption {
+    margin-top: 16px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-low);
+    line-height: 1.5;
+}
+
+.reel-fallback {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--text-low);
+    font-size: 13px;
+}
+
+.reel-fallback[hidden] {
+    display: none;
+}
+
+.reel-fallback span {
     font-family: var(--font-display);
-    font-size: 90px;
+    font-size: 72px;
     font-weight: 700;
     color: var(--border-strong);
 }
+
+.reel-card.is-broken .reel-controls,
+.reel-card.is-broken .reel-badge,
+.reel-card.is-broken .reel-progress,
+.reel-card.is-broken .reel-center-play {
+    display: none;
+}
+
 
 .about-me .intro {
     color: var(--text-hi);
@@ -922,13 +1157,8 @@ nav li {
         width: 100%;
         display: flex;
         justify-content: center;
-    }
-
-    .aboutIMG .avatar-frame {
-        width: 100%;
-        max-width: 340px;
-        height: auto;
-        aspect-ratio: 4 / 5;
+        position: static;
+        align-self: auto;
     }
 
     .process-steps {
@@ -942,11 +1172,6 @@ nav li {
         max-width: 100%;
     }
 
-    .aboutIMG .avatar-frame {
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 4 / 5;
-    }
 
     .about-me h2 {
         font-size: 19px;
@@ -1900,102 +2125,260 @@ footer {
 }
 
 /* ==========================================================================
-   Project access popup
+   Project access (PIN gate)
    ========================================================================== */
 
-.proj-popup-overlay {
+.proj-lock {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.pin-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(2, 19, 38, 0.85);
-    backdrop-filter: blur(6px);
-    display: none;
+    inset: 0;
+    background: rgba(2, 19, 38, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
     padding: 20px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.proj-popup-box {
+.pin-overlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.pin-box {
     position: relative;
     width: 100%;
-    max-width: 380px;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-subtle);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: var(--shadow-deep);
-    color: var(--text-hi);
+    max-width: 410px;
     text-align: center;
-}
-
-.proj-popup-box h2 {
-    font-size: 20px;
-    margin-bottom: 18px;
-    font-weight: 700;
-}
-
-.proj-popup-box input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid var(--border-subtle);
-    background: var(--bg-0);
     color: var(--text-hi);
-    font-size: 14.5px;
-    outline: none;
+    padding: 38px 32px 26px;
+    border-radius: var(--radius-lg);
+    border: 1px solid transparent;
+    background:
+        linear-gradient(var(--bg-elevated), var(--bg-elevated)) padding-box,
+        linear-gradient(135deg, var(--accent-blue), var(--brand-red)) border-box;
+    box-shadow: var(--shadow-deep);
+    transform: scale(0.94) translateY(12px);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.proj-popup-box input:focus {
+.pin-overlay.show .pin-box {
+    transform: none;
+}
+
+.pin-box.is-success {
+    background:
+        linear-gradient(var(--bg-elevated), var(--bg-elevated)) padding-box,
+        linear-gradient(135deg, #28c840, var(--accent-blue)) border-box;
+}
+
+.pin-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-mid);
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.pin-close:hover {
+    background: var(--brand-red);
+    border-color: var(--brand-red);
+    color: #fff;
+}
+
+.pin-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--accent-blue);
+    background: rgba(27, 92, 255, 0.12);
+    border: 1px solid rgba(27, 92, 255, 0.35);
+    transition: all 0.3s ease;
+}
+
+.pin-box.is-success .pin-icon {
+    color: #28c840;
+    background: rgba(40, 200, 64, 0.12);
+    border-color: rgba(40, 200, 64, 0.4);
+}
+
+.pin-box h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.pin-sub {
+    color: var(--text-mid);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.pin-sub strong {
+    color: var(--text-hi);
+}
+
+.pin-box .when-success {
+    display: none;
+}
+
+.pin-box.is-success .when-success {
+    display: block;
+}
+
+.pin-box.is-success .when-idle {
+    display: none;
+}
+
+.pin-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 24px 0 6px;
+}
+
+.pin-inputs input {
+    width: 46px;
+    height: 56px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-hi);
+    background: var(--bg-0);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    caret-color: var(--accent-blue);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.pin-inputs input.filled {
     border-color: var(--accent-blue);
 }
 
-#proj-error-msg {
-    height: 20px;
+.pin-inputs input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(27, 92, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+.pin-inputs.shake {
+    animation: pinShake 0.45s ease;
+}
+
+@keyframes pinShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+}
+
+.pin-error {
+    min-height: 20px;
+    margin: 8px 0 14px;
     font-size: 13px;
-    margin-top: 6px;
     color: var(--brand-red);
 }
 
-.proj-popup-actions {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
-}
-
-#projSubmitBtn {
-    flex: 1;
-    padding: 12px 0;
+.pin-submit {
+    width: 100%;
+    padding: 13px;
     border: none;
     border-radius: 8px;
-    background: var(--accent-blue);
+    background: var(--brand-red);
     color: #fff;
     font-size: 15px;
     font-weight: 600;
-    cursor: pointer;
-    transition: 0.25s ease;
+    transition: all 0.25s ease;
 }
 
-#projSubmitBtn:hover {
-    background: #3a70ff;
+.pin-submit:hover:not(:disabled) {
+    background: var(--brand-red-deep);
+    transform: translateY(-1px);
 }
 
-#projCloseBtn.close-text-btn {
-    flex: 1;
-    padding: 12px 0;
-    border: 1px solid var(--border-subtle);
+.pin-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.pin-open {
+    margin-top: 18px;
+    padding: 12px 22px;
     border-radius: 8px;
-    background: transparent;
-    color: var(--text-mid);
+    background: var(--brand-red);
+    color: #fff;
+    font-weight: 600;
     font-size: 14px;
+    text-decoration: none;
+    align-items: center;
+    gap: 8px;
+}
+
+.pin-box.is-success .pin-open {
+    display: inline-flex;
+}
+
+.pin-open[hidden] {
+    display: none !important;
+}
+
+.pin-help {
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--text-low);
+}
+
+.pin-help a {
+    color: var(--accent-blue);
+    text-decoration: none;
     font-weight: 600;
 }
 
-#projCloseBtn.close-text-btn:hover {
-    border-color: var(--brand-red);
-    color: var(--text-hi);
+.pin-help a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width:420px) {
+    .pin-box {
+        padding: 32px 20px 22px;
+    }
+
+    .pin-inputs {
+        gap: 7px;
+    }
+
+    .pin-inputs input {
+        width: 40px;
+        height: 50px;
+        font-size: 20px;
+    }
 }
 
 /* ==========================================================================
